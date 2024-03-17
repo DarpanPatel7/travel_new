@@ -1,0 +1,107 @@
+%inputTransition {
+  		-webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  		-moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  		-o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  		transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.signup {
+	font-family: "raleway", sans-serif;
+	text-overflow: ellipsis;
+	background-image: url("../images/signup/signup_bg.jpg");
+	background-attachment: fixed;
+	height: auto;
+	min-height: 105em !important;
+	background-size: cover;
+
+	label {
+		color: white;
+		font-weight: 300 !important;
+		font-size: 1.25em;
+		margin-bottom: 0.75em !important;
+		text-align: left !important;
+	}
+	
+	.heading {
+		margin: 2em 0 0.75em 0;
+		font-size: 2.75em;
+		font-weight: 300;
+		color: white;
+		text-align: center;
+	}
+	
+	.containerBox {
+		box-sizing: border-box;
+		border-radius: 0.5em;
+		min-height: 88.5em;
+		margin: 0em 2em 1.5em 2em;
+		padding: 2em 3em;
+		height: auto;
+		background: rgba(48,48,48,0.8);
+		-o-text-overflow: ellipsis;
+    	text-overflow: ellipsis;
+	}	
+
+	.input {
+  		display: inline-block;
+  		-webkit-box-sizing: content-box;
+  		-moz-box-sizing: content-box;
+  		box-sizing: content-box;
+  		padding: 5px 10px;
+  		width: 95%;
+  		border: 2px solid white;
+  		-webkit-border-radius: 5px;
+  		border-radius: 3px;
+  		font-family: 'Raleway', "sans-serif";
+  		font-size: 1.25em;
+  		font-weight: 300;
+  		color: white;
+  		margin-bottom: 2em;
+  		-o-text-overflow: clip;
+  		text-overflow: clip;
+  		background: rgba(244,244,244,0.25);
+		@extend %inputTransition;
+	
+		&:focus {
+  			box-shadow: 0px 0px 5px 0px white;
+			}
+	}
+	
+	.button {
+  		display: inline-block;
+  		-webkit-box-sizing: content-box;
+  		-moz-box-sizing: content-box;
+  		box-sizing: content-box;
+  		cursor: pointer;
+  		padding: 10px 50px;
+  		border: 2px solid white;
+  		-webkit-border-radius: 5px;
+  		border-radius: 5px;
+  		font-size: 1.25em;
+  		font-weight: 300;
+  		margin-top: 0.75em;
+  		color: rgba(255,255,255,1);
+  		background: rgba(255,255,255,0.0);
+  		-o-text-overflow: clip;
+  		text-overflow: clip;
+  		@extend %inputTransition;
+	
+		&:hover {
+  			color: gray;
+  			background: white;
+		}
+	}
+	
+	.loginPrompt {
+		color: white;
+		font-weight: 300;
+		font-size: 1.25em;
+		text-align: center;
+		margin-top: 3em !important;
+	}
+	
+	a, a:hover, a:focus, a:active {
+		text-decoration: none !important;
+		color: white !important;
+	}
+}

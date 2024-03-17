@@ -1,0 +1,138 @@
+/*----------------------------------------------------------------------------------
+
+								 Project Meteor
+								    main.scss
+						      Written in : SCSS
+
+                   I've not commented on the code at all.
+   I started the project using Vanilla CSS. But as you might already know, Vanilla
+		  CSS is hard to maintain. So decided to use SCSS. So far so good.
+
+								 ¯\_(ツ)_/¯
+
+----------------------------------------------------------------------------------*/
+
+
+
+
+@import url("../fonts/font-awesome-4.7.0/css/font-awesome.min.css");
+@import "flights";
+@import "popularFlights";
+@import "searchFlights";
+@import "searchHotels";
+@import "searchCabs";
+@import "trains";
+@import "popularTrains";
+@import "bus";
+@import "popularBus";
+@import "cabs";
+@import "popularCabs";
+@import "hotels";
+@import "popularHotels";
+@import "header";
+@import "footer";
+@import "footerMod";
+@import "login";
+@import "signup";
+@import "booking";
+@import "passengers";
+@import "payment";
+@import "redirect";
+@import "generateTicket";
+@import "messages";
+@import "blocked";
+@import "userDashboard";
+@import "hotelDetails";
+@import "showDriverDetails";
+@import "generateReceipt";
+@import "generateRiderReceipt";
+@import "searchBus";
+@import "forgotPassword";
+@import "home";
+@import "aboutUs";
+@import "contactUs";
+
+
+
+
+/* ================================================================ */
+/*                               RESET                              */
+/* ================================================================ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 16px;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+a, a:active, a:hover, a:link {
+	text-decoration: none !important;
+}
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.container-fluid {
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+	height: auto!important;
+}
+
+.dots {
+	text-decoration: underline;
+	text-decoration-color: white;
+	text-decoration-style: dotted;
+}
+
+.spacer {
+	visibility: hidden;
+}
+
+.spacerLarge {
+	margin: 2.5em;
+	visibility: hidden;
+}
+
+div[class="col-sm-12"], div[class="col-sm-4"], div[class="col-sm-8"], div[class="col-sm-2"] {
+    padding: 0 !important;
+	margin: 0 !important;
+}

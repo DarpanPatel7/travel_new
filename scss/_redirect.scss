@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+$deep_blue: rgba(37,25,116,1.00);
+
+.redirect {
+	font-family: "Raleway", "sans-serif";
+	height: auto;
+	background: white;
+	margin-top: 10em;
+	
+	.text {
+		font-size: 1.25em;
+		font-weight: 400;
+		color: $deep_blue;
+		margin-top: 2em;
+	}
+	
+	img {
+		height: 70px;
+		width: 70px;
+	}
+}

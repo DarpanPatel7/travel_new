@@ -1,0 +1,93 @@
+COLUMNS
+________________________________________________________________________________________
+
+hotelID | hotelName | city | stars | rating | hotelDesc | checkIn | checkOut | price | roomsAvailable | wifi | swimmingPool | parking | restaurant | laundry | cafe
+
+
+
+DATA TYPES
+________________________________________________________________________________________
+
+hotelID : varchar(10)
+hotelName : varchar(100)
+city : varchar(20)
+stars : int(5)
+rating : varchar(5)
+hotelDesc : varchar(1000)
+checkIn : varchar(6)
+checkOut: varchar(6)
+price: int(10)
+roomsAvailable: int(5)
+wifi, swimmingPool, parking, restaurant, laundry, cafe: varchar (5)
+
+
+
+EXAMPLE
+________________________________________________________________________________________
+
+hotelId: DEL001
+
+//assign id to the hotels in a city as [CITY_CODE][HOTEL_CODE]. Start the hotel code with 001 and increment it by one for each hotel.
+
+
+hotelName: Vivanta By Taj Dwarka
+
+//name the hotels in sentence case, i.e. capitalize each word.
+
+
+city: New Delhi
+
+//also in sentence case.
+
+
+stars: 5
+
+//classify the hotels based on the stars assigned to it. This will always be an integer.
+
+
+rating: 4.5
+
+//this is the average rating of the hotel based on traveller ratings. Note that this is not the same as the stars column.
+
+
+hotelDesc: A few minutes' walk from Sector-21 Dwarka Metro Station, the upscale Vivanta by Taj Dwarka is easily accessible from the rest of the Delhi NCR region. New Delhi Railway Station is a 50-minute drive away whereas the airport is 10 km from here. Connaught Place, the prime entertainment and commercial hub, and popular tourist attractions are all within 30 minutes from the hotel.
+
+//this is the hotel description. Please cap it to 1000 words.
+
+ 
+checkIn: 14:00
+
+//the check in time. Use 24 hours time format.
+
+
+checkOut: 12:00
+
+//the check out time. Use 24 hours time format.
+
+
+price: 7500
+
+//the price of the hotels per night
+
+
+roomsAvailable: 13
+
+//the no. of rooms available
+
+
+wifi: yes  //can be either yes or no
+
+
+swimmingPool: yes  //can be either yes or no
+
+
+parking: yes  //can be either yes or no
+
+
+restaurant: yes  //can be either yes or no
+
+
+laundry: yes  //can be either yes or no
+
+
+cafe: yes  //can be either yes or no

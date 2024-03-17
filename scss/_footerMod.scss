@@ -1,0 +1,92 @@
+$footer_col: rgba(37,25,116,1.00);
+$line_col: rgba(17,12,54,1.00);
+
+.footerMod {
+	height: auto;
+	text-align: center;
+	background: $footer_col;
+	font-family: "Raleway", "sans-serif";
+	color: white;
+	padding: 3em 0;
+
+	.footerHeading {
+		font-family: "oswald", "sans-serif";
+		text-align: center;
+		font-size: 1.5em;
+		font-weight: 500;
+		margin: 0 0 1.1em 0;
+		text-transform: uppercase;
+	}
+	
+	.footerText {
+		text-align: center;
+		font-size: 1em;
+		font-weight: 300;
+		margin-bottom: 2em;
+		line-height: 1.5em;
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+	.fa {
+		color: red;
+		font-size: 2em;
+		margin: -0.75em 0 0.42em 0;
+	}
+	
+	.flagContainer img{
+		height: 0.5em;
+		width: auto;
+		margin-top: -0.35em;
+	}
+	
+	.socialLinks {
+		text-align: center;
+
+		.fb, .gp, .tw, .in {
+			font-size: 1em;
+			font-weight: 300;
+			margin-bottom: 0.7em;
+		}
+		
+		.fb::before {
+			content: "\f082";
+			font-family: "FontAwesome";
+		}
+			
+		.gp::before {
+			content: "\f0d4";
+			font-family: "FontAwesome";
+		}
+		.tw::before {
+			content: "\f081";
+			font-family: "FontAwesome";
+		}
+		.in::before {
+			content: "\f08c";
+			font-family: "FontAwesome";
+		}
+	}
+	
+	.copyright {
+		display: inline-block;
+		border-top: 2px solid $line_col;
+		font-size: 0.95em;
+		padding:1em 0 0 0;
+		margin: 2em 0 0 0;
+		width: 90%;
+		position: relative;
+	}
+	
+	.copyrightContainer {
+		text-align: center;
+	}
+	
+	a, a:hover, a:focus, a:active {
+		text-decoration: none !important;
+		color: white !important;
+	}
+
+}

@@ -1,0 +1,27 @@
+GO THROUGH COMMENTS ON EACH FILE TO SEE THE INSTRUCTIONS
+
+prevent selection of inbound flights which depart before the arrival of the outbound flight
+
+validate input fields
+
+convert e-tickets to pdf
+
+close mysql connections
+
+show more hotel images in hotel details page
+
+use sessions to prevent people from acessing hotel details page by skipping hotel search page
+
+destroy noOfRooms and other variables stored in session after the successfull generation of hotel booking receipt
+
+allow users to change their name, password, address etc.
+
+add input to type the pickup location
+
+style the delete confirm popup
+
+pull the popular destinations information from the database
+
+add forgot password option
+
+show distance from popular places in hotels

@@ -1,0 +1,43 @@
+POST DATA TO PHP SCRIPT AND RETRIEVE DATA TO SHOW ON PAGE USING JQUERY AJAX
+
+
+
+
+
+
+
+
+
+
+
+MY PROFILE
+
+name
+address
+etc....
+
+
+MY BOOKINGS
+
+table containing all the hotel bookings. allow users to cancel bookings.
+
+
+MY TICKETS
+
+show a table containing all the flight, train, bus, cab bookings with a button to download the respective tickets. only show those tickets which have not been cancelled
+
+
+CANCEL TICKET
+
+list all the bookings and show cancel buttons on all bookings
+
+
+MY ACCOUNT
+
+account type
+account created on
+no of bookings
+delete my account
+
+
+SETTINGS

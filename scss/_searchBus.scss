@@ -1,0 +1,242 @@
+@charset "UTF-8";
+
+$deep_blue: rgba(37,25,116,1.00);
+
+.searchBus {
+	font-family: "Raleway", "sans-serif";
+	height: auto;
+	background: white;
+	margin-bottom: 2em;
+
+	.col-sm-2, .col-sm-1, .col-sm-3 {
+		border-right: 1px solid $deep_blue;
+		position: relative;
+		top: +0.25em;
+		min-height: 4.75em !important;
+		
+		&:last-child {
+			border-right: none;
+		}		
+	}
+	
+	 .col-sm-4 {
+		border-right: 1px solid $deep_blue;
+		position: relative;
+		top: +0.25em;
+	}
+	
+	.heightAdjustBusSearch {
+		border-right: 1px solid $deep_blue;
+		position: relative;
+		top: +0.25em;
+		min-height: 4.75em !important;
+	}
+	
+	.heading {
+		font-size: 2.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: 2em 0 0 0;
+	}
+	
+	.query {
+		font-size: 2.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: 0.25em 0 1.25em 0; 
+	}
+	
+	.noOfBus {
+		font-size: 1.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: -1.8em 0 2.5em 0;
+	}
+	
+	.noBus {
+		box-sizing: border-box;
+		background:rgba(245,245,255,1.00);
+		height: auto;
+		font-size: 1.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: 1.5em 3em 1.5em 3em;
+		border: 2px solid $deep_blue;
+		border-radius: 8px;
+		padding: 2em;
+	}
+	
+	.bg {
+		box-sizing: border-box;
+		background-color: #ffffff;
+		background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b6b6b6' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+		background-attachment: fixed;
+		height: auto;
+		min-height: 10em;
+		margin: 3em;
+		border: 2px solid rgba(200,200,200,1.00);
+		border-radius: 8px;
+		padding: 0.35em;
+	}
+	
+	.listItem {
+		box-sizing: border-box;
+		background:rgba(245,245,255,1.00);
+		height: auto;
+		min-height: 6.3em;
+		vertical-align: middle;
+		margin: 1.5em 3em;
+		border: 2px solid $deep_blue;
+		border-radius: 8px;
+		padding: 0.35em 0 0.75em 0;
+	
+		.headings {
+			color: $deep_blue;
+			font-size: 1.2em;
+			margin-top: 0.75em;
+			margin-bottom: 0.5em;
+		}
+	}
+	
+	.listItemMenuContainer {
+		box-sizing: border-box;
+		background:rgba(245,245,255,1.00);
+		height: auto;
+		min-height: 3.5em;
+		vertical-align: middle;
+		margin: 1.5em 3em -4.5em 3em;
+		border: 2px solid $deep_blue;
+		border-radius: 8px;
+		padding: 0 0 0.15em 0;
+		
+		.headings {
+			color: $deep_blue;
+			font-size: 1.2em;
+			margin-top: 0.35em;
+			margin-bottom: 0.5em;
+		}
+		
+		.col-sm-2, .col-sm-1, .col-sm-3 {
+			border-right: 1px solid $deep_blue;
+			position: relative;
+			top: +0.25em;
+			min-height: 2em !important;
+			
+			
+			&:last-child {
+			border-right: none;
+			}		
+		}
+	}
+	
+	.operatorLogo img {
+		display: inline-block;
+		height: 4em;
+		width: 4em;
+		border-radius: 5px;
+		position: relative;
+		top: +0.8em;
+		border: 1px solid $deep_blue;
+	}
+	
+	.listItem {
+		.departs, .arrives, .fare, .type, .operators, .seats {
+			color: rgba(132,132,132,1.00);
+			font-size: 1.4em;
+			margin: 0.2em 0 0 0;
+			text-overflow: ellipsis;
+		}
+		
+		.flightOperator {
+			color: rgba(132,132,132,1.00);
+			font-size: 1.25em;
+			margin: 0.2em 0 0 0;
+			text-overflow: ellipsis;
+			position: relative;
+			top: +0.8em;
+		}
+	
+		.fare::before {
+			content: "₹";
+			font-family: "sans-serif";
+			font-weight: 400;
+			position: relative;
+			top: +0.1em;
+			left: 0;
+		}
+		
+		.availabilityGreen {
+			color: rgba(0,225,22,1.00);
+			font-size: 1.4em;
+			position: relative;
+			top: -0.03em;
+			margin: 0.25em;
+		}
+		
+		.availabilityRed {
+			color: rgba(255,0,0,1.00);
+			font-size: 1.4em;
+			position: relative;
+			top: -0.03em;
+			margin: 0.25em;
+		}
+		
+		.departsSubscript, .arrivesSubscript, .fareSubscript, .typeSubscript, .seatsSubscript {
+			color: rgba(0,111,255,1.00);
+			font-size: 1.15em;
+			margin: 0.1em;
+		}
+		
+		.flightNoSubscript {
+			color: rgba(0,111,255,1.00);
+			font-size: 1em;
+			margin: 0.1em;
+			position: relative;
+			top: +0.75em;
+		}
+		
+		.unavailabilitySubscript {
+			color: rgba(0,111,255,1.00);
+			font-size: 1.15em;
+			margin: 0.1em;
+			position: relative;
+			top: -0.15em;
+		}
+
+		.availabilityBookingButton {
+			color: rgba(0,111,255,1.00);
+			font-size: 1.15em;
+			margin: -0.5em;
+			width: 75%;
+			border: 1px solid rgba(0,111,255,1.00);
+			border-radius: 5px;
+			background: transparent;
+			transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+			cursor: pointer;
+		}
+		
+		.availabilityBookingButton:hover {
+			color: white;
+			font-size: 1.15em;
+			border: 1px solid rgba(0,111,255,1.00);
+			border-radius: 5px;
+			background: rgba(0,111,255,1.00);
+		}
+		
+		.departsSubscript::before, .arrivesSubscript::before, .fareSubscript::before, .flightNoSubscript::before, .typeSubscript::before, .seatsSubscript::before {
+			content: "(";
+			position: relative;
+			left: +0.25em !important;
+		}
+		
+		.departsSubscript::after, .arrivesSubscript::after, .fareSubscript::after, .flightNoSubscript::after, .typeSubscript::after, .seatsSubscript::after {
+			content: ")";
+			position: relative;
+			left: -0.25em !important;
+		}
+	}
+}

@@ -1,0 +1,87 @@
+.popularTrains {
+	font-family: "Raleway", "sans-serif";
+	height: auto;
+	min-height: 56em;
+	max-height: 56em;
+	background: white;
+	margin-bottom: 5em;
+
+	.col-sm-2,.col-sm-4 {
+		border-right: 1px solid rgba(37,25,116,1.00);
+		position: relative;
+		top: +0.25em;
+		min-height: 8.5em !important;
+	}
+	
+	.col-sm-2:last-child, .col-sm-4:last-child {
+		border-right: none;
+	}
+	
+	.heading {
+		font-size: 2.5em;
+		font-weight: 300;
+		color: rgba(37,25,116,1.00);
+		text-align: center;
+		margin: 2em 0 0 0;
+	}
+	
+	.bg {
+		box-sizing: border-box;
+		background-color: #ffffff;
+		background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b6b6b6' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+		background-attachment: fixed;
+		height: auto;
+		min-height: 10em;
+		margin: 3em;
+		border: 2px solid rgba(200,200,200,1.00);
+		border-radius: 8px;
+		padding: 0.35em;
+	}
+	
+	.listItem {
+		box-sizing: border-box;
+		background:rgba(245,245,255,1.00);
+		height: auto;
+		min-height: 10em;
+		vertical-align: middle;
+		margin: 3em;
+		border: 2px solid rgba(37,25,116,1.00);
+		border-radius: 8px;
+		padding: 0.35em 0 0.75em 0;
+
+		.headings {
+			color: rgba(37,25,116,1.00);
+			font-size: 1.2em;
+			margin-top: 0.75em;
+			margin-bottom: 0.5em;
+		}
+
+		.number, .name, .zone, .departs, .arrives {
+			color: rgba(132,132,132,1.00);
+			font-size: 1.75em;
+			margin: 0.2em 0 0 0;
+			text-overflow: ellipsis;
+		}
+		
+		.numberSubscript, .nameSubscript, .zoneSubscript, .departsSubscript, .arrivesSubscript {
+			color: rgba(0,111,255,1.00);
+			font-size: 1.25em;
+			margin: 0.1em;
+		}
+
+		.nameSubscript {
+			&::before {
+				content: "(";
+				position: relative;
+				left: +0.25em !important;
+			}
+		
+			&::after {
+				content: ")";
+				position: relative;
+				left: -0.25em !important;
+			}
+		}
+		
+}	
+}

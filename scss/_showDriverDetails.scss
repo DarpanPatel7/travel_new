@@ -1,0 +1,285 @@
+@charset "UTF-8";
+
+$deep_blue: rgba(37,25,116,1.00);
+$transition500: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+
+.showDriverDetails {
+	font-family: "Raleway", "sans-serif";
+	height: auto;
+	background: white;
+	margin-bottom: 2em;
+
+	/*.col-sm-2, .col-sm-1, .col-sm-3 {
+		border-right: 1px solid $deep_blue;
+		position: relative;
+		top: +0.25em;
+		min-height: 5.4em !important;
+		
+		&:last-child {
+			border-right: none;
+		}		
+	}*/
+	
+	.col-sm-6 {
+		border-right: 1px solid $deep_blue;
+		
+		&:last-child {
+			border-right: none;
+		}
+	}
+	
+	.heading {
+		font-size: 2.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: 2em 0 0 0;
+	}
+	
+	.query {
+		font-size: 2.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: 0.25em 0 1.25em 0; 
+	}
+	
+	.noOfHotels {
+		font-size: 1.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: -1.8em 0 2.5em 0;
+	}
+	
+	.noHotels {
+		box-sizing: border-box;
+		background:rgba(245,245,255,1.00);
+		height: auto;
+		font-size: 1.5em;
+		font-weight: 300;
+		color: $deep_blue;
+		text-align: center;
+		margin: 1.5em 3em 1.5em 3em;
+		border: 2px solid $deep_blue;
+		border-radius: 8px;
+		padding: 2em;
+	}
+	
+	.bg {
+		box-sizing: border-box;
+		background-color: #ffffff;
+		background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b6b6b6' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+		background-attachment: fixed;
+		height: auto;
+		min-height: 10em;
+		margin: 3em;
+		border: 2px solid rgba(200,200,200,1.00);
+		border-radius: 8px;
+		padding: 0.35em;
+	}
+	
+	.listItem {
+		box-sizing: border-box;
+		background:rgba(245,245,255,1.00);
+		height: auto;
+		min-height: 5em;
+		vertical-align: middle;
+		border: 2px solid $deep_blue;
+		border-radius: 8px;
+		padding: 2em;
+		
+		.borderLeft {
+			border-left: 1px solid $deep_blue;
+		}
+		
+		.leftBox, .rightBox {
+			height: auto;
+		}
+		
+		.rightBox {
+			padding-right: 0;
+		}
+		
+		.headings {
+			color: $deep_blue;
+			font-size: 1.2em;
+			margin-top: 0.75em;
+			margin-bottom: 0.5em;
+		}
+		
+		.imageContainer {
+			img {
+				width: 100%;
+				//height: 36em;
+				border: 1px solid $deep_blue;
+				border-radius: 100%;
+				position: relative;
+				margin-left: -1em;
+				margin-top: 2.5em;
+			}
+		}
+		
+		.noMargin {
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		
+		.hotelDesc {
+			color: $deep_blue;
+			font-size: 1.2em;
+			margin-top: 2em;
+			margin-bottom: 0.5em;
+			margin-left: -0.5em;
+			text-align: justify;
+		}
+		
+		.info {
+			font-family: "Roboto", "sans-serif";
+			color: $deep_blue;
+			font-size: 1.5em;
+			font-weight: 300;
+			text-align: center;
+			margin-top: 0em;
+			margin-bottom: 0;
+		}
+		
+		.hotelName {
+			font-family: "Oswald", "sans-serif";
+			color: $deep_blue;
+			font-size: 2em;
+			font-weight: 300;
+			letter-spacing: 0.1em;
+		}
+		
+		.location {
+			color: $deep_blue;
+			font-size: 1.25em;
+			font-weight: 400;
+			margin-top: 0.25em;
+		}
+		
+		.rating {
+			color: rgba(0,225,22,1.00);
+			font-size: 3.25em;
+			font-weight: 300;
+			margin-top: 0.5em;
+		}
+		
+		.ratingText, .carText, .contactText {
+			color: $light_blue;
+			font-size: 1em;
+			font-weight: 400;
+			margin-top: -0.5em;
+		}
+		
+		.carText, .contactText {
+			color: $light_blue;
+			font-size: 1em;
+			font-weight: 400;
+			margin-top: 0.6em;
+		}
+		
+		.car, .contact {
+			color: $deep_blue;
+			font-size: 1.5em;
+			font-weight: 300;
+			margin-top: 2em;
+		}
+	
+		.starContainer {
+			margin-top: 2.25em;
+			font-size: 1.5em;
+			color: $light_blue;
+		}	
+		
+		.amenities {
+			margin-top: 1.5em;
+			
+			ul,li {
+				display: inline-block;
+			}
+			
+			li {
+				padding-right: 1.4em;
+				
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+			
+			.icons {
+				display: inline-block;
+				font-size: 1.25em;
+				color: $light_blue;
+				margin-top: 1em;
+				margin-left: 0;
+				margin-right: 0;
+			}
+			
+			.tags {
+				color: $deep_blue;
+				font-size: 0.75em;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+		
+		.checkInOut {
+			margin-top: 1.5em;
+			
+			.time {
+				color: $light_blue;
+				font-size: 2em;
+				font-weight: 300;
+			}
+			
+			.timeTag {
+				color: $deep_blue;
+				font-size: 1em;
+				font-weight: 400;
+			}
+		}
+		
+		.priceContainer {
+			font-family: "Roboto", "sans-serif";
+			font-weight: 200;
+			margin-top: 1.35em;
+			font-size: 2.5em;
+			color: $deep_blue;
+		}
+		
+		.priceNote {
+				font-family: "Raleway", "sans-serif";
+				font-weight: 400;
+				font-size: 0.9em;
+				color: $deep_blue;
+				margin-top: -0.5em
+		}
+		
+		.genReceipt {
+			color: rgba(0,111,255,1.00);
+			font-size: 1.25em;
+			padding: 0.5em;
+			width: 85%;
+			border: 1px solid rgba(0,111,255,1.00);
+			border-radius: 5px;
+			background: transparent;
+			transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+			cursor: pointer;
+			margin-top: 2.5em;
+			margin-bottom: 0.55em;
+		}
+		
+		.genReceipt:hover {
+			color: white;
+			font-size: 1.25em;
+			border: 1px solid rgba(0,111,255,1.00);
+			border-radius: 5px;
+			background: rgba(0,111,255,1.00);
+			margin-top: 2.5em;
+		}
+	}
+}

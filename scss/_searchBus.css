@@ -1,0 +1,176 @@
+@charset "UTF-8";
+.searchBus {
+  font-family: "Raleway", "sans-serif";
+  height: auto;
+  background: white;
+  margin-bottom: 2em; }
+  .searchBus .col-sm-2, .searchBus .col-sm-1, .searchBus .col-sm-3 {
+    border-right: 1px solid #251974;
+    position: relative;
+    top: +0.25em;
+    min-height: 4.75em !important; }
+    .searchBus .col-sm-2:last-child, .searchBus .col-sm-1:last-child, .searchBus .col-sm-3:last-child {
+      border-right: none; }
+  .searchBus .col-sm-4 {
+    border-right: 1px solid #251974;
+    position: relative;
+    top: +0.25em;
+    min-height: 4.75em !important;
+    visibility: hidden; }
+  .searchBus .heading {
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #251974;
+    text-align: center;
+    margin: 2em 0 0 0; }
+  .searchBus .query {
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #251974;
+    text-align: center;
+    margin: 0.25em 0 1.25em 0; }
+  .searchBus .noOfBus {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #251974;
+    text-align: center;
+    margin: -1.8em 0 2.5em 0; }
+  .searchBus .noBus {
+    box-sizing: border-box;
+    background: #f5f5ff;
+    height: auto;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #251974;
+    text-align: center;
+    margin: 1.5em 3em 1.5em 3em;
+    border: 2px solid #251974;
+    border-radius: 8px;
+    padding: 2em; }
+  .searchBus .bg {
+    box-sizing: border-box;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b6b6b6' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    height: auto;
+    min-height: 10em;
+    margin: 3em;
+    border: 2px solid #c8c8c8;
+    border-radius: 8px;
+    padding: 0.35em; }
+  .searchBus .listItem {
+    box-sizing: border-box;
+    background: #f5f5ff;
+    height: auto;
+    min-height: 6.3em;
+    vertical-align: middle;
+    margin: 1.5em 3em;
+    border: 2px solid #251974;
+    border-radius: 8px;
+    padding: 0.35em 0 0.75em 0; }
+    .searchBus .listItem .headings {
+      color: #251974;
+      font-size: 1.2em;
+      margin-top: 0.75em;
+      margin-bottom: 0.5em; }
+  .searchBus .listItemMenuContainer {
+    box-sizing: border-box;
+    background: #f5f5ff;
+    height: auto;
+    min-height: 3.5em;
+    vertical-align: middle;
+    margin: 1.5em 3em -4.5em 3em;
+    border: 2px solid #251974;
+    border-radius: 8px;
+    padding: 0 0 0.15em 0; }
+    .searchBus .listItemMenuContainer .headings {
+      color: #251974;
+      font-size: 1.2em;
+      margin-top: 0.35em;
+      margin-bottom: 0.5em; }
+    .searchBus .listItemMenuContainer .col-sm-2, .searchBus .listItemMenuContainer .col-sm-1, .searchBus .listItemMenuContainer .col-sm-3 {
+      border-right: 1px solid #251974;
+      position: relative;
+      top: +0.25em;
+      min-height: 2em !important; }
+      .searchBus .listItemMenuContainer .col-sm-2:last-child, .searchBus .listItemMenuContainer .col-sm-1:last-child, .searchBus .listItemMenuContainer .col-sm-3:last-child {
+        border-right: none; }
+  .searchBus .operatorLogo img {
+    display: inline-block;
+    height: 4em;
+    width: 4em;
+    border-radius: 5px;
+    position: relative;
+    top: +0.8em;
+    border: 1px solid #251974; }
+  .searchBus .listItem .departs, .searchBus .listItem .arrives, .searchBus .listItem .fare, .searchBus .listItem .type, .searchBus .listItem .operators, .searchBus .listItem .seats {
+    color: #848484;
+    font-size: 1.4em;
+    margin: 0.2em 0 0 0;
+    text-overflow: ellipsis; }
+  .searchBus .listItem .flightOperator {
+    color: #848484;
+    font-size: 1.25em;
+    margin: 0.2em 0 0 0;
+    text-overflow: ellipsis;
+    position: relative;
+    top: +0.8em; }
+  .searchBus .listItem .fare::before {
+    content: "₹";
+    font-family: "sans-serif";
+    font-weight: 400;
+    position: relative;
+    top: +0.1em;
+    left: 0; }
+  .searchBus .listItem .availabilityGreen {
+    color: #00e116;
+    font-size: 1.4em;
+    position: relative;
+    top: -0.03em;
+    margin: 0.25em; }
+  .searchBus .listItem .availabilityRed {
+    color: red;
+    font-size: 1.4em;
+    position: relative;
+    top: -0.03em;
+    margin: 0.25em; }
+  .searchBus .listItem .departsSubscript, .searchBus .listItem .arrivesSubscript, .searchBus .listItem .fareSubscript, .searchBus .listItem .typeSubscript, .searchBus .listItem .seatsSubscript {
+    color: #006fff;
+    font-size: 1.15em;
+    margin: 0.1em; }
+  .searchBus .listItem .flightNoSubscript {
+    color: #006fff;
+    font-size: 1em;
+    margin: 0.1em;
+    position: relative;
+    top: +0.75em; }
+  .searchBus .listItem .unavailabilitySubscript {
+    color: #006fff;
+    font-size: 1.15em;
+    margin: 0.1em;
+    position: relative;
+    top: -0.15em; }
+  .searchBus .listItem .availabilityBookingButton {
+    color: #006fff;
+    font-size: 1.15em;
+    margin: -0.5em;
+    width: 75%;
+    border: 1px solid #006fff;
+    border-radius: 5px;
+    background: transparent;
+    transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    cursor: pointer; }
+  .searchBus .listItem .availabilityBookingButton:hover {
+    color: white;
+    font-size: 1.15em;
+    border: 1px solid #006fff;
+    border-radius: 5px;
+    background: #006fff; }
+  .searchBus .listItem .departsSubscript::before, .searchBus .listItem .arrivesSubscript::before, .searchBus .listItem .fareSubscript::before, .searchBus .listItem .flightNoSubscript::before, .searchBus .listItem .typeSubscript::before, .searchBus .listItem .seatsSubscript::before {
+    content: "(";
+    position: relative;
+    left: +0.25em !important; }
+  .searchBus .listItem .departsSubscript::after, .searchBus .listItem .arrivesSubscript::after, .searchBus .listItem .fareSubscript::after, .searchBus .listItem .flightNoSubscript::after, .searchBus .listItem .typeSubscript::after, .searchBus .listItem .seatsSubscript::after {
+    content: ")";
+    position: relative;
+    left: -0.25em !important; }
