@@ -4,7 +4,7 @@
 	
 		<div class="col-sm-4">
 	
-		<div class="logo"></div>
+		<?php include("common/logo.php"); ?>
 		
 	</div>
 	

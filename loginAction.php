@@ -18,7 +18,7 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="images/favicon.ico">
 
-	<!-- <title>Login | Project Meteor</title> -->
+	<?php $titleNameT = 'Login'; include("common/title.php"); ?>
 
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -69,7 +69,7 @@ session_start();
 
 		?>
 
-		<title>Logged In | Project Meteor</title>
+		<?php $titleNameT = 'Logged In'; include("common/title.php"); ?>
 
 		<div class="container-fluid">
 
@@ -111,7 +111,7 @@ session_start();
 
 	<?php } else { ?>
 
-		<title>Couldn't log in | Project Meteor</title>
+		<?php $titleNameT = "Couldn't log in"; include("common/title.php"); ?>
 
 		<div class="container-fluid">
 

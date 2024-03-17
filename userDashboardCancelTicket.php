@@ -19,7 +19,7 @@ if(!isset($_SESSION["username"]))
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="shortcut icon" href="images/favicon.ico">
 	
-		<title>Dashboard | Project Meteor</title>
+		<?php $titleNameT = 'Dashboard'; include("common/title.php"); ?>
     
     	<link href="css/main.css" rel="stylesheet">
     	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -102,19 +102,19 @@ if(!isset($_SESSION["username"]))
 					
 					$flightBookingsSQL = "SELECT COUNT(*) FROM `flightbookings` WHERE Username='$user' AND cancelled='no'";
 					$flightBookingsQuery = $conn->query($flightBookingsSQL);
-					$noOfFlightBookings = $flightBookingsQuery->fetch_array(MYSQLI_NUM);
+					$noOfFlightBookings = $flightBookingsQuery->fetch(PDO::FETCH_NUM);
 				
 					$cabBookingsSQL = "SELECT COUNT(*) FROM `cabbookings` WHERE Username='$user' AND cancelled='no'";
 					$cabBookingsQuery = $conn->query($cabBookingsSQL);
-					$noOfCabBookings = $cabBookingsQuery->fetch_array(MYSQLI_NUM);
+					$noOfCabBookings = $cabBookingsQuery->fetch(PDO::FETCH_NUM);
 				
 					$busBookingsSQL = "SELECT COUNT(*) FROM `busbookings` WHERE Username='$user' AND cancelled='no'";
 					$busBookingsQuery = $conn->query($busBookingsSQL);
-					$noOfBusBookings = $busBookingsQuery->fetch_array(MYSQLI_NUM);
+					$noOfBusBookings = $busBookingsQuery->fetch(PDO::FETCH_NUM);
 				
 					$trainBookingsSQL = "SELECT COUNT(*) FROM `trainbookings` WHERE Username='$user' AND cancelled='no'";
 					$trainBookingsQuery = $conn->query($trainBookingsSQL);
-					$noOfTrainBookings = $trainBookingsQuery->fetch_array(MYSQLI_NUM);
+					$noOfTrainBookings = $trainBookingsQuery->fetch(PDO::FETCH_NUM);
 				
 				?>
 				

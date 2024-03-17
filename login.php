@@ -11,12 +11,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="shortcut icon" href="images/favicon.ico">
 	
-		<title>Login | Project Meteor</title>
+		<?php $titleNameT = 'Login'; include("common/title.php"); ?>
     
     	<link href="css/main.css" rel="stylesheet">
     	<link href="css/bootstrap.min.css" rel="stylesheet">
     	<link href="css/bootstrap-select.css" rel="stylesheet">
 		<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+		<link href="public/libs/toastr/toastr.css" rel="stylesheet">
     	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400|Raleway:100,300,400,500|Roboto:100,400,500,700" rel="stylesheet">
     	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
@@ -28,7 +29,28 @@
     	<script src="js/jquery-2.1.1.min.js"></script>
     	<script src="js/moment-with-locales.js"></script>
     	<script src="js/bootstrap-datetimepicker.js"></script>
-    		
+		<script src="public/libs/toastr/toastr.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#loginAction').submit(function(event) {
+					// Prevent the form from submitting normally
+					event.preventDefault(); // Prevent default form submission
+					// Your form submission logic here
+					var isError = false;
+					if (!ValidateControl($('#username'))) {
+						showToastr("Enter User Name!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#password'))) {
+						showToastr("Enter Password!", "error");
+						isError = true;
+					}
+					if (!isError) {
+						var form = event.target; // Get the form element from the event
+						form.submit(); // Submit the form
+					}
+				});
+			});
+		</script>
 	</head>
 	
 	<!-- HEAD TAG ENDS -->
@@ -53,13 +75,13 @@
 				
 				<div class="containerBox">
 				
-				<form action="loginAction.php" method="POST">
+				<form action="loginAction.php" method="POST" id="loginAction">
 					
 					<label for="username">Username:</label>
-					<input type="text" class="input" name="username" placeholder="Enter username here" required>
+					<input type="text" class="input" name="username" placeholder="Enter username here" id="username">
 					
 					<label for="password">Password:</label>
-					<input type="password" class="input" name="password" placeholder="Enter password here" required>
+					<input type="password" class="input" name="password" placeholder="Enter password here" id="password">
 					
 					<div class="col-sm-12 text-center">
 					<input type="submit" class="button" name="login" value="Login">

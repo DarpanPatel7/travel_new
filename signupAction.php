@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="images/favicon.ico">
 
-	<!-- <title>Login | Project Meteor</title> -->
+	<?php $titleNameT = 'Sig Up'; include("common/title.php"); ?>
 
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +79,7 @@
 
 		if ($insertDataQuery) { ?>
 
-			<title>Signed Up | Project Meteor</title>
+			<?php $titleNameT = 'Signed Up'; include("common/title.php"); ?>
 
 			<div class="container-fluid">
 
@@ -121,7 +121,7 @@
 
 		<?php } else { ?>
 
-			<title>Couldn't sign up | Project Meteor</title>
+			<?php $titleNameT = "Couldn't sign up"; include("common/title.php"); ?>
 
 			<div class="container-fluid">
 
@@ -166,7 +166,7 @@
 	<?php } else { //if user with the same username exists 
 	?>
 
-		<title>Couldn't sign up | Project Meteor</title>
+		<?php $titleNameT = "Couldn't sign up"; include("common/title.php"); ?>
 
 		<div class="container-fluid">
 

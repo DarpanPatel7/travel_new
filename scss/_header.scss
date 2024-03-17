@@ -13,9 +13,13 @@ $linkRed: rgba(248,78,81,1.00);
 		box-sizing: border-box;
 		height: 4em;
 		width: 15em;
-		margin: 2em 2em 2em 2em;
-		background: url(../images/logo.png) no-repeat;
+		/* margin: 2em 2em 2em 2em; */
+		/* background: url(../images/logo.png) no-repeat; */
     	background-size: 100% 100%;
+		color: black;
+		font-size: 39px;
+		font-weight: bold;
+		padding: 50px;
 	}
 	
 	.headerMenu {

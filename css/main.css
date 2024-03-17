@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*----------------------------------------------------------------------------------
 
-								 Project Meteor
+								 Travel
 								    main.scss
 						      Written in : SCSS
 
@@ -1352,9 +1352,10 @@
   box-sizing: border-box;
   height: 4em;
   width: 15em;
-  margin: 2em 2em 2em 2em;
-  background: url(../images/logo.png) no-repeat;
+  /* margin: 2em 2em 2em 2em; */
+  /* background: url(../images/logo.png) no-repeat; */
   background-size: 100% 100%;
+  padding: 50px;
 }
 .header .headerMenu {
   border-radius: 0.5em;
@@ -4279,9 +4280,12 @@
   box-sizing: border-box;
   height: 4em;
   width: 15em;
-  margin: 1.5em 2em 2em 0.75em;
-  background: url(../images/logo.png) no-repeat;
+  /* margin: 1.5em 2em 2em 0.75em; */
+  /* background: url(../images/logo.png) no-repeat; */
   background-size: 100% 100%;
+  color: black;
+  font-size: 39px;
+  font-weight: bold;
 }
 .home .header .headerMenu {
   border-radius: 0.5em;

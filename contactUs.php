@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="shortcut icon" href="images/favicon.ico">
 	
-		<title>Contact Us | Project Meteor</title>
+		<?php $titleNameT = 'Contact Us'; include("common/title.php"); ?>
     
     	<link href="css/main.css" rel="stylesheet">
     	<link href="css/bootstrap.min.css" rel="stylesheet">

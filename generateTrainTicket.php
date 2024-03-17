@@ -24,7 +24,7 @@ ob_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="shortcut icon" href="images/favicon.ico">
 	
-		<title>E-Ticket | Project Meteor</title>
+		<?php $titleNameT = 'E-Ticket'; include("common/title.php"); ?>
     
     	<link href="css/main.css" rel="stylesheet">
     	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -126,7 +126,7 @@ ob_start();
 				
 				<div class="col-sm-3 text-right">
 					
-					<a href="./"><img src="images/logo.png" alt="Project Meteor Logo" /></a>
+					<a href="./"><img src="images/logo.png" alt="Travel Logo" /></a>
 					
 				</div>
 				

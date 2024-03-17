@@ -9,11 +9,11 @@
 						</div>
 							
 						<div class="footerText">
-							3rd floor, Basai Enclave, Sector 10, <br> Gurugram-122006, Haryana, India
+							Address Here, <br> Gujarat, India
 						</div>
 				
 						<div class="footerText">
-							E-mail: queries@travelwale.com
+							E-mail: queries@travel.com
 						</div>
 						
 					</div>
@@ -45,19 +45,19 @@
 						<div class="socialLinks">
 						
 							<div class="fb">
-								facebook.com/travelwale
+								facebook.com/travel
 							</div>
 						
 							<div class="gp">
-								plus.google.com/travelwale
+								plus.google.com/travel
 							</div>
 						
 							<div class="tw">
-								twitter.com/travelwale
+								twitter.com/travel
 							</div>
 						
 							<div class="in">
-								linkedin.com/travelwale
+								linkedin.com/travel
 							</div>
 						
 						</div> <!-- social links -->
@@ -67,7 +67,7 @@
 					<div class="col-sm-12">
 					<div class="copyrightContainer">
 						<div class="copyright">
-						Copyright &copy; 2018 Joydeep Dev Nath.
+						Copyright &copy; 2024.
 						</div>
 					</div>
 					</div>

@@ -1,23 +1,9 @@
 <?php 
-/* $servername = "localhost";
-$username = "root";
-$password = "pwd";
-$dbname = "projectmeteor";
-
-// Creating a connection to projectmeteor MySQL database
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Checking if we've successfully connected to the database
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} */
-?>
-<?php 
 // DB credentials.
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASS','pwd');
-define('DB_NAME','projectmeteor');
+define('DB_PASS','');
+define('DB_NAME','travel');
 // Establish database connection.
 try
 {
