@@ -5,13 +5,15 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
+
 ?>
 	<!DOCTYPE HTML>
 	<html>
 
 	<head>
 		<title>TMS | Admin Package Creation</title>
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="application/x-javascript">
 			addEventListener("load", function() {
 				setTimeout(hideURLbar, 0);
@@ -53,13 +55,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 		</style>
 		<script>
 			$(document).ready(function() {
-				$('#addbus').submit(function(event) {
+				$('#updatebus').submit(function(event) {
 					// Your form submission logic here
 					var isError = false;
-					if (!ValidateControl($('#busid'))) {
-						showToastr("Enter Bus ID!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#operator'))) {
+					if (!ValidateControl($('#operator'))) {
 						showToastr("Enter Operator!", "error");
 						isError = true;
 					} else if (!ValidateControl($('#type'))) {
@@ -113,134 +112,162 @@ if (strlen($_SESSION['alogin']) == 0) {
 				</div>
 				<!--heder end here-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="manage-buses.php">Home</a><i class="fa fa-angle-right"></i>Create Bus </li>
+					<li class="breadcrumb-item"><a href="manage-buses.php">Home</a><i class="fa fa-angle-right"></i>Update Bus</li>
 				</ol>
 				<!--grid-->
 				<div class="grid-form">
 
 					<!---->
 					<div class="grid-form1">
-						<h3>Create Bus</h3>
+						<h3>Update Bus</h3>
 						<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 						<div class="succWrap" id="succWrap" style="display: none;"></div>
 						<div class="tab-content">
 							<div class="tab-pane active" id="horizontal-form">
-								<form class="form-horizontal" name="addbus" method="post" enctype="multipart/form-data" id="addbus">
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">BUS ID</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="busID" id="busid" placeholder="BUS ID">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Operator</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="operator" placeholder="Operator" id="operator">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Type</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="type" id="type" placeholder=" Type">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Origin</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="origin" id="origin" placeholder="Origin">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Destination</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="destination" id="destination" placeholder=" Destination">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Origin Area</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="originArea" id="originArea" placeholder="Origin Area">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Destination Area</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="destinationArea" id="destinationArea" placeholder="Destination Area">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Departure</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="departure" id="departure" placeholder=" Departure">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Arrival</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="arrival" id="arrival" placeholder="Arrival">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Seats</label>
-										<div class="col-sm-8">
-											<input type="number" class="form-control1" name="seats" id="seats" placeholder="Seats">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Windows</label>
-										<div class="col-sm-8">
-											<input type="number" class="form-control1" name="windows" id="windows" placeholder="Windows">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Fare</label>
-										<div class="col-sm-8">
-											<input type="number" class="form-control1" name="fare" id="fare" placeholder="fare">
-										</div>
-									</div>
+
+								<?php
+								try {
+									$pid = $_GET['pid'] ?? '';
+									$sql = "SELECT * from bus where busID=:pid";
+									$query = $dbh->prepare($sql);
+									$query->bindParam(':pid', $pid, PDO::PARAM_STR);
+									$query->execute();
+									$results = $query->fetchAll(PDO::FETCH_ASSOC);
+								} catch (PDOException $e) {
+									echo "Error: " . $e->getMessage();
+								}
+								$cnt = 1;
+								if ($query->rowCount() > 0) {
+									foreach ($results as $result) {	?>
+
+										<form class="form-horizontal" name="updatebus" method="post" id="updatebus">
+											<input type="hidden" name="busID" value="<?php echo $pid ?>">
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Operator</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="operator" placeholder="Operator" id="operator" value="<?php echo $result['operator'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Type</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="type" id="type" placeholder=" Type" id="type" value="<?php echo $result['type'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Origin</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="origin" id="origin" placeholder="Origin" id="origin" value="<?php echo $result['origin'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Destination</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="destination" id="destination" placeholder=" Destination" id="destination" value="<?php echo $result['destination'] ?? ''; ?>"> 
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Origin Area</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="originArea" id="originArea" placeholder="Origin Area" id="originArea" value="<?php echo $result['originArea'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Destination Area</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="destinationArea" id="destinationArea" placeholder="Destination Area" id="destinationArea" value="<?php echo $result['destinationArea'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Departure</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="departure" id="departure" placeholder=" Departure" id="departure" value="<?php echo $result['departure'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Arrival</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control1" name="arrival" id="arrival" placeholder="Arrival" id="arrival" value="<?php echo $result['arrival'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Seats</label>
+												<div class="col-sm-8">
+													<input type="number" class="form-control1" name="seats" id="seats" placeholder="Seats" id="seats" value="<?php echo $result['seats'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Windows</label>
+												<div class="col-sm-8">
+													<input type="number" class="form-control1" name="windows" id="windows" placeholder="Windows" id="windows" value="<?php echo $result['windows'] ?? ''; ?>">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="focusedinput" class="col-sm-2 control-label">Fare</label>
+												<div class="col-sm-8">
+													<input type="number" class="form-control1" name="fare" id="fare" placeholder="Windows" id="fare" value="<?php echo $result['fare'] ?? ''; ?>">
+												</div>
+											</div>
+									<?php }
+								} ?>
+
 									<div class="row">
 										<div class="col-sm-8 col-sm-offset-2">
-											<button type="submit" name="submit" class="btn-primary btn">Create</button>
-											<button type="reset" class="btn-inverse btn">Reset</button>
+											<button type="submit" name="submit" class="btn-primary btn">Update</button>
+											<a href="manage-buses.php" class="btn-primary btn">Back</a>
 										</div>
 									</div>
-								</form>
+
+
+
+
+
 							</div>
+
+							</form>
+
+
+
+
+
+							<div class="panel-footer">
+
+							</div>
+							</form>
 						</div>
 					</div>
-				</div>
-				<!--//grid-->
+					<!--//grid-->
 
-				<!-- script-for sticky-nav -->
-				<script>
-					$(document).ready(function() {
-						var navoffeset = $(".header-main").offset().top;
-						$(window).scroll(function() {
-							var scrollpos = $(window).scrollTop();
-							if (scrollpos >= navoffeset) {
-								$(".header-main").addClass("fixed");
-							} else {
-								$(".header-main").removeClass("fixed");
-							}
+					<!-- script-for sticky-nav -->
+					<script>
+						$(document).ready(function() {
+							var navoffeset = $(".header-main").offset().top;
+							$(window).scroll(function() {
+								var scrollpos = $(window).scrollTop();
+								if (scrollpos >= navoffeset) {
+									$(".header-main").addClass("fixed");
+								} else {
+									$(".header-main").removeClass("fixed");
+								}
+							});
+
 						});
+					</script>
+					<!-- /script-for sticky-nav -->
+					<!--inner block start here-->
+					<div class="inner-block">
 
-					});
-				</script>
-				<!-- /script-for sticky-nav -->
-				<!--inner block start here-->
-				<div class="inner-block">
-
+					</div>
+					<!--inner block end here-->
+					<!--copy rights start here-->
+					<?php include('includes/footer.php'); ?>
+					<!--COPY rights end here-->
 				</div>
-				<!--inner block end here-->
-				<!--copy rights start here-->
-				<?php include('includes/footer.php'); ?>
-				<!--COPY rights end here-->
 			</div>
-		</div>
-		<!--//content-inner-->
-		<!--/sidebar-menu-->
-		<?php include('includes/sidebarmenu.php'); ?>
-		<div class="clearfix"></div>
+			<!--//content-inner-->
+			<!--/sidebar-menu-->
+			<?php include('includes/sidebarmenu.php'); ?>
+			<div class="clearfix"></div>
 		</div>
 		<script>
 			var toggle = true;
@@ -288,8 +315,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$pwindows = $_POST['windows'];
 		$pfare = $_POST['fare'];
 		try {
-			$sql = "INSERT INTO bus(busID, operator, type, origin, destination, originArea, destinationArea, departure, arrival, seats, windows, fare) VALUES(:busID, :operator, :type, :origin, :destination, :originArea, :destinationArea, :departure, :arrival, :seats, :windows, :fare)";
-
+			$sql = "update bus set operator=:operator, type=:type, origin=:origin, destination=:destination, originArea=:originArea, destinationArea=:destinationArea, departure=:departure, arrival=:arrival, seats=:seats, windows=:windows, fare=:fare where busID=:busID";
 			$query = $dbh->prepare($sql);
 			$query->bindParam(':busID', $pbusID, PDO::PARAM_STR);
 			$query->bindParam(':operator', $poperator, PDO::PARAM_STR);
@@ -306,9 +332,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 			$success = $query->execute();
 			if ($success) {
-				$msg = "Bus Created Successfully";
+				$msg = "Bus Updated Successfully";
 				echo "<script>showToastr('$msg', 'success');</script>"; // Assuming showToastr is a JavaScript function to show a notification
-				echo "<script>$('#succWrap').append('<strong>SUCCESS</strong>:Bus Created Successfully');$('#succWrap').show();</script>";
+				echo "<script>$('#succWrap').append('<strong>SUCCESS</strong>:Bus Updated Successfully');$('#succWrap').show();</script>";
 			} else {
 				$error = "Something went wrong. Please try again";
 				echo "<script>showToastr('$error', 'error');</script>"; // Assuming showToastr is a JavaScript function to show a notification
@@ -317,5 +343,4 @@ if (strlen($_SESSION['alogin']) == 0) {
 			echo "Error: " . $e->getMessage();
 		}
 	}
-}
-?>
+} ?>

@@ -53,17 +53,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 		</style>
 		<script>
 			$(document).ready(function() {
-				$('#addbus').submit(function(event) {
+				$('#addflight').submit(function(event) {
 					// Your form submission logic here
 					var isError = false;
-					if (!ValidateControl($('#busid'))) {
-						showToastr("Enter Bus ID!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#operator'))) {
-						showToastr("Enter Operator!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#type'))) {
-						showToastr("Enter Type!", "error");
+					if (!ValidateControl($('#flight_no'))) {
+						showToastr("Enter FlightNo!", "error");
 						isError = true;
 					} else if (!ValidateControl($('#origin'))) {
 						showToastr("Enter Origin!", "error");
@@ -71,26 +65,32 @@ if (strlen($_SESSION['alogin']) == 0) {
 					} else if (!ValidateControl($('#destination'))) {
 						showToastr("Enter Destination!", "error");
 						isError = true;
-					} else if (!ValidateControl($('#originArea'))) {
-						showToastr("Enter Origin Area!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#destinationArea'))) {
-						showToastr("Enter Destination Area!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#departure'))) {
-						showToastr("Enter Departure!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#arrival'))) {
-						showToastr("Enter Arrival!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#seats'))) {
-						showToastr("Enter Seats!", "error");
-						isError = true;
-					} else if (!ValidateControl($('#windows'))) {
-						showToastr("Enter Windows!", "error");
+					} else if (!ValidateControl($('#distance'))) {
+						showToastr("Enter Distance!", "error");
 						isError = true;
 					} else if (!ValidateControl($('#fare'))) {
 						showToastr("Enter Fare!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#class'))) {
+						showToastr("Enter Class!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#departs'))) {
+						showToastr("Enter Departs!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#arrives'))) {
+						showToastr("Enter Arrives!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#operator'))) {
+						showToastr("Enter Operator!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#origin_code'))) {
+						showToastr("Enter Origin Code!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#destination_code'))) {
+						showToastr("Enter Destination Code!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#refundable'))) {
+						showToastr("Enter Refundable!", "error");
 						isError = true;
 					}
 					if (isError) {
@@ -113,41 +113,29 @@ if (strlen($_SESSION['alogin']) == 0) {
 				</div>
 				<!--heder end here-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="manage-buses.php">Home</a><i class="fa fa-angle-right"></i>Create Bus </li>
+					<li class="breadcrumb-item"><a href="manage-flights.php">Home</a><i class="fa fa-angle-right"></i>Create Flight</li>
 				</ol>
 				<!--grid-->
 				<div class="grid-form">
 
 					<!---->
 					<div class="grid-form1">
-						<h3>Create Bus</h3>
+						<h3>Create Flight</h3>
 						<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 						<div class="succWrap" id="succWrap" style="display: none;"></div>
 						<div class="tab-content">
 							<div class="tab-pane active" id="horizontal-form">
-								<form class="form-horizontal" name="addbus" method="post" enctype="multipart/form-data" id="addbus">
+								<form class="form-horizontal" name="addflight" method="post" enctype="multipart/form-data" id="addflight">
 									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">BUS ID</label>
+										<label for="focusedinput" class="col-sm-2 control-label">FlightNo</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="busID" id="busid" placeholder="BUS ID">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Operator</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="operator" placeholder="Operator" id="operator">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Type</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="type" id="type" placeholder=" Type">
+											<input type="text" class="form-control1" name="flight_no" id="flight_no" placeholder="FlightNo">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="focusedinput" class="col-sm-2 control-label">Origin</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="origin" id="origin" placeholder="Origin">
+											<input type="text" class="form-control1" name="origin" placeholder="Origin" id="origin">
 										</div>
 									</div>
 									<div class="form-group">
@@ -157,45 +145,65 @@ if (strlen($_SESSION['alogin']) == 0) {
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Origin Area</label>
+										<label for="focusedinput" class="col-sm-2 control-label">Distance</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="originArea" id="originArea" placeholder="Origin Area">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Destination Area</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="destinationArea" id="destinationArea" placeholder="Destination Area">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Departure</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="departure" id="departure" placeholder=" Departure">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Arrival</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control1" name="arrival" id="arrival" placeholder="Arrival">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Seats</label>
-										<div class="col-sm-8">
-											<input type="number" class="form-control1" name="seats" id="seats" placeholder="Seats">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="focusedinput" class="col-sm-2 control-label">Windows</label>
-										<div class="col-sm-8">
-											<input type="number" class="form-control1" name="windows" id="windows" placeholder="Windows">
+											<input type="number" class="form-control1" name="distance" id="distance" placeholder="Distance">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="focusedinput" class="col-sm-2 control-label">Fare</label>
 										<div class="col-sm-8">
-											<input type="number" class="form-control1" name="fare" id="fare" placeholder="fare">
+											<input type="number" class="form-control1" name="fare" id="fare" placeholder="Fare">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">Class</label>
+										<div class="col-sm-8">
+											<select class="form-control1" name="class" id="class">
+												<option value="">Select Class</option>
+												<option value="Business">Business</option>
+												<option value="Economy">Economy</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">Departs</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control1" name="departs" id="departs" placeholder="Departs">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">arrives</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control1" name="arrives" id="arrives" placeholder="Arrives">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">operator</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control1" name="operator" id="operator" placeholder="Operator">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">Origin Code</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control1" name="origin_code" id="origin_code" placeholder="Origin Code">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">Destination Code</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control1" name="destination_code" id="destination_code" placeholder="Destination Code">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="focusedinput" class="col-sm-2 control-label">Refundable</label>
+										<div class="col-sm-8">
+											<select class="form-control1" name="refundable" id="refundable">
+												<option value="">Select</option>
+												<option value="Refundable">Yes</option>
+												<option value="Non-Refundable">No</option>
+											</select>
 										</div>
 									</div>
 									<div class="row">
@@ -275,40 +283,40 @@ if (strlen($_SESSION['alogin']) == 0) {
 	</html>
 <?php
 	if (isset($_POST['submit'])) {
-		$pbusID = $_POST['busID'];
-		$poperator = $_POST['operator'];
-		$ptype = $_POST['type'];
+		$pflight_no = $_POST['flight_no'];
 		$porigin = $_POST['origin'];
 		$pdestination = $_POST['destination'];
-		$poriginArea = $_POST['originArea'];
-		$pdestinationArea = $_POST['destinationArea'];
-		$pdeparture = $_POST['departure'];
-		$parrival = $_POST['arrival'];
-		$pseats = $_POST['seats'];
-		$pwindows = $_POST['windows'];
+		$pdistance = $_POST['distance'];
 		$pfare = $_POST['fare'];
+		$pclass = $_POST['class'];
+		$pdeparts = $_POST['departs'];
+		$parrives = $_POST['arrives'];
+		$poperator = $_POST['operator'];
+		$porigin_code = $_POST['origin_code'];
+		$pdestination_code = $_POST['destination_code'];
+		$prefundable = $_POST['refundable'];
 		try {
-			$sql = "INSERT INTO bus(busID, operator, type, origin, destination, originArea, destinationArea, departure, arrival, seats, windows, fare) VALUES(:busID, :operator, :type, :origin, :destination, :originArea, :destinationArea, :departure, :arrival, :seats, :windows, :fare)";
+			$sql = "INSERT INTO flights(flight_no,origin,destination,distance,fare,class,departs,arrives,operator,origin_code,destination_code,refundable) VALUES(:flight_no, :origin, :destination, :distance, :fare, :class, :departs, :arrives, :operator, :origin_code, :destination_code, :refundable)";
 
 			$query = $dbh->prepare($sql);
-			$query->bindParam(':busID', $pbusID, PDO::PARAM_STR);
-			$query->bindParam(':operator', $poperator, PDO::PARAM_STR);
-			$query->bindParam(':type', $ptype, PDO::PARAM_STR);
+			$query->bindParam(':flight_no', $pflight_no, PDO::PARAM_STR);
 			$query->bindParam(':origin', $porigin, PDO::PARAM_STR);
 			$query->bindParam(':destination', $pdestination, PDO::PARAM_STR);
-			$query->bindParam(':originArea', $poriginArea, PDO::PARAM_STR);
-			$query->bindParam(':destinationArea', $pdestinationArea, PDO::PARAM_STR);
-			$query->bindParam(':departure', $pdeparture, PDO::PARAM_STR);
-			$query->bindParam(':arrival', $parrival, PDO::PARAM_STR);
-			$query->bindParam(':seats', $pseats, PDO::PARAM_STR);
-			$query->bindParam(':windows', $pwindows, PDO::PARAM_STR);
+			$query->bindParam(':distance', $pdistance, PDO::PARAM_STR);
 			$query->bindParam(':fare', $pfare, PDO::PARAM_STR);
+			$query->bindParam(':class', $pclass, PDO::PARAM_STR);
+			$query->bindParam(':departs', $pdeparts, PDO::PARAM_STR);
+			$query->bindParam(':arrives', $parrives, PDO::PARAM_STR);
+			$query->bindParam(':operator', $poperator, PDO::PARAM_STR);
+			$query->bindParam(':origin_code', $porigin_code, PDO::PARAM_STR);
+			$query->bindParam(':destination_code', $pdestination_code, PDO::PARAM_STR);
+			$query->bindParam(':refundable', $prefundable, PDO::PARAM_STR);
 
 			$success = $query->execute();
 			if ($success) {
-				$msg = "Bus Created Successfully";
+				$msg = "Flight Created Successfully";
 				echo "<script>showToastr('$msg', 'success');</script>"; // Assuming showToastr is a JavaScript function to show a notification
-				echo "<script>$('#succWrap').append('<strong>SUCCESS</strong>:Bus Created Successfully');$('#succWrap').show();</script>";
+				echo "<script>$('#succWrap').append('<strong>SUCCESS</strong>:Flight Created Successfully');$('#succWrap').show();</script>";
 			} else {
 				$error = "Something went wrong. Please try again";
 				echo "<script>showToastr('$error', 'error');</script>"; // Assuming showToastr is a JavaScript function to show a notification
