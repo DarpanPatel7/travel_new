@@ -90,7 +90,7 @@ ob_start();
 						
 				$getBookedSeatsOutboundSQL = "SELECT noOfBookings FROM `flights` WHERE flight_no='$flightNoOutbound'";
 				$getBookedSeatsOutboundQuery = $conn->query($getBookedSeatsOutboundSQL);
-				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery ->fetch_array(MYSQLI_NUM);
+				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery->fetch(PDO::FETCH_NUM);
 			
 				$bookedSeatsOutbound = $bookedSeatsOutboundGet[0];
 				$newBookedSeats = $bookedSeatsOutbound+$totalPassengers;
@@ -101,7 +101,7 @@ ob_start();
 				
 				$getBookedSeatsInboundSQL = "SELECT noOfBookings FROM `flights` WHERE flight_no='$flightNoInbound'";
 				$getBookedSeatsInboundQuery = $conn->query($getBookedSeatsInboundSQL);
-				$bookedSeatsInboundGet = $getBookedSeatsInboundQuery ->fetch_array(MYSQLI_NUM);
+				$bookedSeatsInboundGet = $getBookedSeatsInboundQuery->fetch(PDO::FETCH_NUM);
 			
 				$bookedSeatsInbound = $bookedSeatsInboundGet[0];
 				$newBookedSeats = $bookedSeatsInbound+$totalPassengers;
@@ -113,7 +113,7 @@ ob_start();
 				
 				$getSeatsAvailableOutboundSQL = "SELECT seats_available FROM `flights` WHERE flight_no='$flightNoOutbound'";
 				$getSeatsAvailableOutboundQuery = $conn->query($getSeatsAvailableOutboundSQL);
-				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch_array(MYSQLI_NUM);
+				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch(PDO::FETCH_NUM);
 			
 				$seatsAvailableOutbound = $SeatsAvailableOutboundGet[0];
 				$newseatsAvailable = $seatsAvailableOutbound-$totalPassengers;
@@ -124,7 +124,7 @@ ob_start();
 				
 				$getSeatsAvailableInboundSQL = "SELECT seats_available FROM `flights` WHERE flight_no='$flightNoInbound'";
 				$getSeatsAvailableInboundQuery = $conn->query($getSeatsAvailableInboundSQL);
-				$SeatsAvailableInboundGet = $getSeatsAvailableInboundQuery ->fetch_array(MYSQLI_NUM);
+				$SeatsAvailableInboundGet = $getSeatsAvailableInboundQuery ->fetch(PDO::FETCH_NUM);
 			
 				$seatsAvailableInbound = $SeatsAvailableInboundGet[0];
 				$newseatsAvailable = $seatsAvailableInbound-$totalPassengers;
@@ -139,7 +139,7 @@ ob_start();
 				
 				$getBookedSeatsOutboundSQL = "SELECT noOfBookings FROM `flights` WHERE flight_no='$flightNoOutbound'";
 				$getBookedSeatsOutboundQuery = $conn->query($getBookedSeatsOutboundSQL);
-				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery ->fetch_array(MYSQLI_NUM);
+				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery ->fetch(PDO::FETCH_NUM);
 			
 				$bookedSeatsOutbound = $bookedSeatsOutboundGet[0];
 				$newBookedSeats = $bookedSeatsOutbound+$totalPassengers;
@@ -151,7 +151,7 @@ ob_start();
 				
 				$getSeatsAvailableOutboundSQL = "SELECT seats_available FROM `flights` WHERE flight_no='$flightNoOutbound'";
 				$getSeatsAvailableOutboundQuery = $conn->query($getSeatsAvailableOutboundSQL);
-				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch_array(MYSQLI_NUM);
+				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch(PDO::FETCH_NUM);
 			
 				$seatsAvailableOutbound = $SeatsAvailableOutboundGet[0];
 				$newseatsAvailable = $seatsAvailableOutbound-$totalPassengers;
@@ -988,7 +988,7 @@ ob_start();
 				
 	$bookingIDSQL = "SELECT * FROM `flightbookings` ORDER BY `bookingID` DESC LIMIT 1";
 	$bookingIDQuery = $conn->query($bookingIDSQL);
-	$bookingIDGet = $bookingIDQuery ->fetch_array(MYSQLI_NUM);
+	$bookingIDGet = $bookingIDQuery ->fetch(PDO::FETCH_NUM);
 	$latestBookingID = $bookingIDGet[0];
 	$currentBookingID = $latestBookingID;
 

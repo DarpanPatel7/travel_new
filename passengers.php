@@ -23,13 +23,34 @@ if(!isset($_SESSION["username"]))
     
     	<link href="css/main.css" rel="stylesheet">
     	<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="public/libs/toastr/toastr.css" rel="stylesheet">
     	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400|Raleway:100,300,400,500|Roboto:100,400,500,700" rel="stylesheet">
     	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
     	<script src="js/jquery-3.2.1.min.js"></script>
     	<script src="js/main.js"></script>
     	<script src="js/bootstrap.min.js"></script>
-    	
+		<script src="public/libs/toastr/toastr.js"></script>
+    	<script>
+		$(document).ready(function() {
+			$('#payment').submit(function(event) {
+				// Prevent the form from submitting normally
+				event.preventDefault(); // Prevent default form submission
+				// Your form submission logic here
+				var isError = false;
+				$('.inputPassengerName').each(function() {
+					if (!ValidateControl($(this))) {
+						showToastr($(this).attr('placeholder')+"!", "error");
+						isError = true;
+					}
+				});
+				if (!isError) {
+					var form = event.target; // Get the form element from the event
+					form.submit(); // Submit the form
+				}
+			});
+		});
+	</script>
 	</head>
 	
 	<!-- HEAD TAG ENDS -->
@@ -108,7 +129,7 @@ if(!isset($_SESSION["username"]))
 				
 				<div class="boxCenter">
 				
-				<form action="payment.php" method="POST">
+				<form action="payment.php" method="POST" id="payment">
 				
 				<?php for($i=1; $i<=$totalPassengers; $i++) {?>
 				
@@ -131,16 +152,16 @@ if(!isset($_SESSION["username"]))
 						
 						<input type="hidden" name="totalPassengersHidden" value="<?php echo $totalPassengers; ?>">
 						
-						<input type="hidden" name="fareHidden" value="<?php echo $fare; ?>">
-						<input type="hidden" name="typeHidden" value="<?php echo $type; ?>">
-						<input type="hidden" name="classHidden" value="<?php echo $class; ?>">
-						<input type="hidden" name="originHidden" value="<?php echo $origin; ?>">
-						<input type="hidden" name="destinationHidden" value="<?php echo $destination; ?>">
-						<input type="hidden" name="departHidden" value="<?php echo $depart; ?>">
-						<input type="hidden" name="returnHidden" value="<?php echo $return; ?>">
-						<input type="hidden" name="adultsHidden" value="<?php echo $adults; ?>">
-						<input type="hidden" name="childrenHidden" value="<?php echo $children; ?>">
-						<input type="hidden" name="modeHidden" value="<?php echo $mode; ?>">
+						<input type="hidden" name="fareHidden" value="<?php echo $fare ?? ''; ?>">
+						<input type="hidden" name="typeHidden" value="<?php echo $type ?? ''; ?>">
+						<input type="hidden" name="classHidden" value="<?php echo $class ?? ''; ?>">
+						<input type="hidden" name="originHidden" value="<?php echo $origin ?? ''; ?>">
+						<input type="hidden" name="destinationHidden" value="<?php echo $destination ?? ''; ?>">
+						<input type="hidden" name="departHidden" value="<?php echo $depart ?? ''; ?>">
+						<input type="hidden" name="returnHidden" value="<?php echo $return ?? ''; ?>">
+						<input type="hidden" name="adultsHidden" value="<?php echo $adults ?? ''; ?>">
+						<input type="hidden" name="childrenHidden" value="<?php echo $children ?? ''; ?>">
+						<input type="hidden" name="modeHidden" value="<?php echo $mode ?? ''; ?>">
 						
 						<?php if($mode=="bus") { ?>
 							<input type="hidden" name="dateHidden" value="<?php echo $date; ?>">

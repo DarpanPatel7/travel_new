@@ -1,15 +1,3 @@
-<?php session_start();
-if(!isset($_SESSION["username"]))
-{
-    	header("Location:blocked.php");
-   		$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
-}
-?>
-
-<!-- dumping the current page to buffer -->
-<?php
-ob_start();
-?>
 
 <!DOCTYPE html>
 
@@ -24,8 +12,7 @@ ob_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="shortcut icon" href="images/favicon.ico">
 	
-		<?php $titleNameT = 'E-Ticket'; include("common/title.php"); ?>
-    
+		<title>E-Ticket | Travel</title>    
     	<link href="css/main.css" rel="stylesheet">
     	<link href="css/bootstrap.min.css" rel="stylesheet">
     	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400|Raleway:100,300,400,500|Roboto:100,400,500,700" rel="stylesheet">
@@ -45,61 +32,7 @@ ob_start();
 		
 		<div class="spacer">a</div>
 		
-		<?php 
-		
-		date_default_timezone_set("Asia/Kolkata");
-		$date=date('l jS \of F Y \a\t h:i:s A');
-		
-		$datePass=$_POST["dateHidden"];
-		
-		$totalPassengers=$_POST["totalPassengersHidden"];
-		$busID=$_POST["busIDHidden"];
-	
-		for($i=1; $i<=$totalPassengers; $i++) {
-			$name[$i]=$_POST["nameHidden$i"];
-			$gender[$i]=$_POST["genderHidden$i"];
-		}
-		
-		$mode=$_POST["modeHidden"];
-		$fare=$_POST["fareHidden"];
-		$origin=$_POST["originHidden"];
-		$destination=$_POST["destinationHidden"];
-		$depart=$_POST["departHidden"];
-		$return=$_POST["returnHidden"];
-	
-		?>
-		<?php include("common/config.php"); ?>
-		<?php
-			if($mode=="bus"){
-				
-				$getBookedSeatsOutboundSQL = "SELECT noOfBookings FROM `bus` WHERE busID='$busID'";
-				$getBookedSeatsOutboundQuery = $conn->query($getBookedSeatsOutboundSQL);
-				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery ->fetch(PDO::FETCH_NUM);
-			
-				$bookedSeatsOutbound = $bookedSeatsOutboundGet[0];
-				$newBookedSeats = $bookedSeatsOutbound+$totalPassengers;
-				
-				//updating the no. of bookings
-				$outboundBookingUpdateSQL = "UPDATE `bus` SET noOfBookings='$newBookedSeats' WHERE busID='$busID'";
-				$outboundBookingUpdateQuery = $conn->query($outboundBookingUpdateSQL);
-				
-				$getSeatsAvailableOutboundSQL = "SELECT seatsAvailable FROM `bus` WHERE busID='$busID'";
-				$getSeatsAvailableOutboundQuery = $conn->query($getSeatsAvailableOutboundSQL);
-				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch(PDO::FETCH_NUM);
-			
-				$seatsAvailableOutbound = $SeatsAvailableOutboundGet[0];
-				$newseatsAvailable = $seatsAvailableOutbound-$totalPassengers;
-				
-				//updating the no. of seats available
-				$outboundSeatUpdateSQL = "UPDATE `bus` SET seatsAvailable='$newseatsAvailable' WHERE busID='$busID'";
-				$outboundSeatUpdateQuery = $conn->query($outboundSeatUpdateSQL);
-	
-			}
-		
-			//add other modes here
-		
-		?>
-		
+								
 		<div class="col-sm-12 generateTicket">
 		
 			<div class="commonHeader">
@@ -116,8 +49,7 @@ ob_start();
 					
 					<div class="dateTime">
 						
-						<span class="generated">Generated: </span><?php echo $date; ?>
-						
+						<span class="generated">Generated: </span>Sunday 17th of March 2024 at 05:45:34 PM						
 					</div>
 					
 				</div>
@@ -139,8 +71,9 @@ ob_start();
 			</div> <!-- contains the header and logo -->
 			
 			<!-- changing contents of the page based on mode -->
-				
-				<div class="col-sm-12"></div> <!-- empty class -->
+			
+						
+			<div class="col-sm-12"></div> <!-- empty class -->
 			
 				<div class="col-sm-1"></div>
 				
@@ -148,7 +81,7 @@ ob_start();
 			
 					<div class="subHeading">
 						
-						Bus Details
+						Outbound Flight
 						
 					</div>
 				
@@ -160,15 +93,8 @@ ob_start();
 				
 				<div class="col-sm-10 boxCenter"> <!-- outboundFlight Box -->
 				
-					<?php
-				
-					$outboundFlightSQL = "SELECT * FROM `bus` WHERE busID='$busID'";
-					$outboundFlightQuery = $conn->query($outboundFlightSQL);
-					$row = $outboundFlightQuery->fetch(PDO::FETCH_ASSOC);
-					
-					?>
-				
-					<div class="col-sm-4 borderRight text-center">
+									
+					<div class="col-sm-2 borderRight text-center">
 					
 						<div class="flightOperatorHeading">
 						
@@ -178,14 +104,12 @@ ob_start();
 						
 						<div class="flightOperator">
 						
-							<?php echo $row["operator"]; ?>
-							
+							IndiGo							
 						</div>
 						
 						<div class="flightNo">
 						
-							<?php echo $row["type"]; ?>
-							
+							PNQ-121							
 						</div>
 						
 					</div> <!-- col-sm-4 -->
@@ -200,14 +124,12 @@ ob_start();
 						
 						<div class="origin">
 						
-							<?php echo $origin; ?>
-							
+							Pune							
 						</div>
 						
 						<div class="originSubscript">
 						
-							<?php echo $row["originArea"]; ?>
-							
+							PNQ							
 						</div>
 						
 					</div> <!-- col-sm-4 -->
@@ -222,14 +144,12 @@ ob_start();
 						
 						<div class="origin">
 						
-							<?php echo $destination; ?>
-							
+							Guwahati							
 						</div>
 						
 						<div class="destinationSubscript">
 						
-							<?php echo $row["destinationArea"]; ?>
-							
+							GAU							
 						</div>
 						
 					</div> <!-- col-sm-4 -->
@@ -244,19 +164,17 @@ ob_start();
 						
 						<div class="departs">
 						
-							<?php echo $datePass; ?>
-							
+							22/03/2024							
 						</div>
 						
 						<div class="departsSubscript">
 						
-							<?php echo $row["departure"]; ?>
-							
+							3:55							
 						</div>
 						
 					</div> <!-- col-sm-4 -->
 					
-					<div class="col-sm-2 text-center">
+					<div class="col-sm-2 borderRight text-center">
 					
 						<div class="arrivesHeading">
 						
@@ -266,20 +184,183 @@ ob_start();
 						
 						<div class="arrives">
 						
-							<?php echo $datePass; ?>
-							
+							22/03/2024							
 						</div>
 						
 						<div class="arrivesSubscript">
 						
-							<?php echo $row["arrival"]; ?>
+							8:20							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+					<div class="col-sm-2 text-center">
+					
+						<div class="classHeading">
+						
+							Class
 							
+						</div>
+						
+						<div class="class">
+						
+							Economy							
+						</div>
+						
+						<div class="classSubscript">
+						
+							Non-Refundable							
 						</div>
 						
 					</div> <!-- col-sm-4 -->
 					
 				</div> <!-- outboundFlight Box -->
 			
+				<div class="col-sm-1"></div>
+				
+				<div class="col-sm-12 spacer">a</div>
+				
+				<div class="col-sm-1"></div>
+				
+				<div class="col-sm-10">
+			
+					<div class="subHeading">
+						
+						Inbound Flight
+						
+					</div>
+				
+				</div>
+							
+				<div class="col-sm-12"></div> <!-- empty class -->
+			
+				<div class="col-sm-1"></div>
+				
+				<div class="col-sm-10 boxCenter"> <!-- inboundFlight Box -->
+				
+									
+					<div class="col-sm-2 borderRight text-center">
+					
+						<div class="flightOperatorHeading">
+						
+							Operator
+							
+						</div>
+						
+						<div class="flightOperator">
+						
+							Jet Airways							
+						</div>
+						
+						<div class="flightNo">
+						
+							GHY-152							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+					<div class="col-sm-2 borderRight text-center">
+					
+						<div class="originHeading">
+						
+							Origin
+							
+						</div>
+						
+						<div class="origin">
+						
+							Guwahati							
+						</div>
+						
+						<div class="originSubscript">
+						
+							GAU							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+					<div class="col-sm-2 borderRight text-center">
+					
+						<div class="destinationHeading">
+						
+							Destination
+							
+						</div>
+						
+						<div class="origin">
+						
+							Pune							
+						</div>
+						
+						<div class="destinationSubscript">
+						
+							PNQ							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+					<div class="col-sm-2 borderRight text-center">
+					
+						<div class="departsHeading">
+						
+							Departure
+							
+						</div>
+						
+						<div class="departs">
+						
+							24/03/2024							
+						</div>
+						
+						<div class="departsSubscript">
+						
+							19:15							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+					<div class="col-sm-2 borderRight text-center">
+					
+						<div class="arrivesHeading">
+						
+							Arrival
+							
+						</div>
+						
+						<div class="arrives">
+						
+							24/03/2024							
+						</div>
+						
+						<div class="arrivesSubscript">
+						
+							00:05							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+					<div class="col-sm-2 text-center">
+					
+						<div class="classHeading">
+						
+							Class
+							
+						</div>
+						
+						<div class="class">
+						
+							Economy							
+						</div>
+						
+						<div class="classSubscript">
+						
+							Refundable							
+						</div>
+						
+					</div> <!-- col-sm-4 -->
+					
+				</div> <!-- inboundFlight Box -->
+				
 				<div class="col-sm-12 spacer">a</div>
 				
 				<div class="col-sm-1"></div>
@@ -338,14 +419,12 @@ ob_start();
 							
 						</div> <!-- columnHeaders -->
 						
-						<?php for($i=1; $i<=$totalPassengers; $i++) {?>
-						
+												
 						<div class="col-sm-2">
 								
 								<div class="serialNo text-center">
 									
-									<?php echo $i; ?>
-									
+									1									
 								</div>
 								
 							</div>
@@ -354,8 +433,7 @@ ob_start();
 								
 								<div class="passengerName text-center">
 									
-									<?php echo $name[$i]; ?>
-									
+									sfsdf									
 								</div>
 								
 							</div>
@@ -364,16 +442,77 @@ ob_start();
 								
 								<div class="gender text-center">
 									
-									<?php echo $gender[$i]; ?>
-									
+									Male									
 								</div>
 								
 							</div>
 							
-							<?php } ?>		
+													
+						<div class="col-sm-2">
+								
+								<div class="serialNo text-center">
+									
+									2									
+								</div>
+								
+							</div>
+							
+							<div class="col-sm-7">
+								
+								<div class="passengerName text-center">
+									
+									sfsdfsd									
+								</div>
+								
+							</div>
+							
+							<div class="col-sm-3">
+								
+								<div class="gender text-center">
+									
+									Male									
+								</div>
+								
+							</div>
+							
+													
+						<div class="col-sm-2">
+								
+								<div class="serialNo text-center">
+									
+									3									
+								</div>
+								
+							</div>
+							
+							<div class="col-sm-7">
+								
+								<div class="passengerName text-center">
+									
+									sdfsdf									
+								</div>
+								
+							</div>
+							
+							<div class="col-sm-3">
+								
+								<div class="gender text-center">
+									
+									Male									
+								</div>
+								
+							</div>
+							
+														
 						
 					</div> <!-- boxCenter -->
+				
+				<div class="col-sm-1"></div>
 			
+			
+			
+			
+						
 			<div class="importantInfo">
 			
 				<div class="col-sm-12"></div> <!-- empty class -->
@@ -448,22 +587,5 @@ ob_start();
 </html>
 
 <!-- after user login system is built push the username usign the curent session to the database -->
-<?php
-
-	$user = $_SESSION["username"];
-	$dateFormatted=date("d-m-Y"); //formatting the date as DD-MM-YY
-	$bookingDataInsertSQL = "INSERT INTO `busbookings`(username,date,cancelled,origin,destination,passengers) VALUES('$user','$dateFormatted','no','$origin','$destination','$totalPassengers')";
-	$bookingDataInsertQuery = $conn->query($bookingDataInsertSQL);
-				
-	$bookingIDSQL = "SELECT * FROM `busbookings` ORDER BY `bookingID` DESC LIMIT 1";
-	$bookingIDQuery = $conn->query($bookingIDSQL);
-	$bookingIDGet = $bookingIDQuery ->fetch(PDO::FETCH_NUM);
-	$latestBookingID = $bookingIDGet[0];
-	$currentBookingID = $latestBookingID;
-
-?>
 		
 <!-- saving the file as temp.html -->
-<?php
-file_put_contents('tickets\busTicket'.$currentBookingID.'.html', ob_get_contents());
-?>

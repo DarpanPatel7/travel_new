@@ -42,21 +42,8 @@ if(!isset($_SESSION["username"]))
 		
 		<div class="spacer">a</div>
 		<div class="spacer">a</div>
-		
+		<?php include("common/config.php"); ?>
 		<?php
-		
-			$servername = "localhost";
-			$username = "root";
-			$password = "pwd";
-			$dbname = "projectmeteor";
-			
-			// Creating a connection to projectmeteor MySQL database
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			
-			// Checking if we've successfully connected to the database
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
 		
 			$type = $_SESSION["carTypeCabs"];
 		

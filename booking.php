@@ -597,7 +597,7 @@ if(!isset($_SESSION["username"]))
 						
 							<div class="col-sm-4">
 							
-							<div class="origin"><?php echo $rowCab["origin"]; ?></div>
+							<div class="origin"><?php echo $rowCab["origin"] ?? ''; ?></div>
 							
 							</div>
 							
@@ -609,30 +609,30 @@ if(!isset($_SESSION["username"]))
 							
 							<div class="col-sm-4">
 							
-							<div class="destination"><?php echo $rowCab["destination"]; ?></div>
+							<div class="destination"><?php echo $rowCab["destination"] ?? ''; ?></div>
 								
 							</div>
 							
 						</div>
 						
 						<div class="col-sm-3 borderRight">
-							<div class="checkIn"><?php echo $_SESSION["dateCabs"]; ?></div>
+							<div class="checkIn"><?php echo $_SESSION["dateCabs"]?? ''; ?></div>
 							<div class="checkInSubscript">Pickup Date</div>
 						</div>
 						
 						<div class="col-sm-3 borderRight">
-							<div class="checkOut"><?php echo $_SESSION["timeCabs"]; ?></div>
+							<div class="checkOut"><?php echo $_SESSION["timeCabs"]?? ''; ?></div>
 							<div class="checkOutSubscript">Pickup Time</div>
 						</div>
 						
 						
 						<div class="col-sm-3 borderRight">
-							<div class="noOfRooms"><?php echo $_SESSION["carTypeCabs"]; ?></div>
+							<div class="noOfRooms"><?php echo $_SESSION["carTypeCabs"]?? ''; ?></div>
 							<div class="noOfRoomsSubscript">Type of Car</div>
 						</div>
 						
 						<div class="col-sm-3">
-							<div class="noOfGuests"><?php echo $rowCab["distance"]." km"; ?></div>
+							<div class="noOfGuests"><?php echo $rowCab["distance"] ?? ''." km"; ?></div>
 							<div class="noOfGuestsSubscript">Distance</div>
 						</div>
 						
@@ -659,50 +659,50 @@ if(!isset($_SESSION["username"]))
 					<?php if($carType=="Hatchback"): ?>
 						
 					<div class="col-sm-8">
-						<div class="heading">Distance (<?php echo $rowCab["distance"]; ?>km @ <span class="sansSerif">₹ </span> 5.5/km) </div>
-						<div class="heading">Time (<?php echo $rowCab["time"]; ?> min @ <span class="sansSerif">₹ </span> 1.25/min) </div>
+						<div class="heading">Distance (<?php echo $rowCab["distance"] ?? ''; ?>km @ <span class="sansSerif">₹ </span> 5.5/km) </div>
+						<div class="heading">Time (<?php echo $rowCab["time"] ?? ''; ?> min @ <span class="sansSerif">₹ </span> 1.25/min) </div>
 						<div class="heading">Convenience Fee</div>	
 					</div>
 					
 					<div class="col-sm-4">
-						<div class="price"><span class="sansSerif">₹ </span><?php echo $rowCab["distance"]*5.5; ?></div>
-						<div class="price"><span class="sansSerif">₹ </span><?php echo $rowCab["time"]*1.25; ?></div>
+						<div class="price"><span class="sansSerif">₹ </span><?php echo ($rowCab["distance"] ?? 0)*5.5; ?></div>
+						<div class="price"><span class="sansSerif">₹ </span><?php echo ($rowCab["time"] ?? 0)*1.25; ?></div>
 						<div class="price"><span class="sansSerif">₹ </span>250</div>
 					</div>
 					
-					<?php $totalFare=($rowCab["distance"]*5.5)+($rowCab["time"]*1.25+250); ?>
+					<?php $totalFare=(($rowCab["distance"] ?? 0)*5.5)+(($rowCab["time"] ?? 0)*1.25+250); ?>
 					
 					<?php elseif($carType=="Sedan"): ?>
 					
 					<div class="col-sm-8">
-						<div class="heading">Distance (<?php echo $rowCab["distance"]; ?>km @ <span class="sansSerif">₹ </span> 8.75/km) </div>
-						<div class="heading">Time (<?php echo $rowCab["time"]; ?> min @ <span class="sansSerif">₹ </span> 2/min) </div>
+						<div class="heading">Distance (<?php echo $rowCab["distance"] ?? ''; ?>km @ <span class="sansSerif">₹ </span> 8.75/km) </div>
+						<div class="heading">Time (<?php echo $rowCab["time"] ?? ''; ?> min @ <span class="sansSerif">₹ </span> 2/min) </div>
 						<div class="heading">Convenience Fee</div>	
 					</div>
 					
 					<div class="col-sm-4">
-						<div class="price"><span class="sansSerif">₹ </span><?php echo $rowCab["distance"]*8.75; ?></div>
-						<div class="price"><span class="sansSerif">₹ </span><?php echo $rowCab["time"]*2; ?></div>
+						<div class="price"><span class="sansSerif">₹ </span><?php echo ($rowCab["distance"] ?? 0)*8.75; ?></div>
+						<div class="price"><span class="sansSerif">₹ </span><?php echo ($rowCab["time"] ?? 0)*2; ?></div>
 						<div class="price"><span class="sansSerif">₹ </span>250</div>
 					</div>
 					
-					<?php $totalFare=($rowCab["distance"]*8.75)+($rowCab["time"]*2+250); ?>
+					<?php $totalFare=(($rowCab["distance"] ?? 0)*8.75)+(($rowCab["time"] ?? 0)*2+250); ?>
 					
 					<?php elseif($carType=="SUV"): ?>
 					
 					<div class="col-sm-8">
-						<div class="heading">Distance (<?php echo $rowCab["distance"]; ?>km @ <span class="sansSerif">₹ </span> 13.25/km) </div>
-						<div class="heading">Time (<?php echo $rowCab["time"]; ?> min @ <span class="sansSerif">₹ </span> 3.75/min) </div>
+						<div class="heading">Distance (<?php echo $rowCab["distance"] ?? ''; ?>km @ <span class="sansSerif">₹ </span> 13.25/km) </div>
+						<div class="heading">Time (<?php echo $rowCab["time"] ?? ''; ?> min @ <span class="sansSerif">₹ </span> 3.75/min) </div>
 						<div class="heading">Convenience Fee</div>	
 					</div>
 					
 					<div class="col-sm-4">
-						<div class="price"><span class="sansSerif">₹ </span><?php echo $rowCab["distance"]*13.25; ?></div>
-						<div class="price"><span class="sansSerif">₹ </span><?php echo $rowCab["time"]*3.75; ?></div>
+						<div class="price"><span class="sansSerif">₹ </span><?php echo ($rowCab["distance"] ?? 0)*13.25; ?></div>
+						<div class="price"><span class="sansSerif">₹ </span><?php echo ($rowCab["time"] ?? 0)*3.75; ?></div>
 						<div class="price"><span class="sansSerif">₹ </span>250</div>
 					</div>
 					
-					<?php $totalFare=($rowCab["distance"]*13.25)+($rowCab["time"]*3.75+250); ?>
+					<?php $totalFare=(($rowCab["distance"] ?? 0)*13.25)+(($rowCab["time"] ?? 0)*3.75+250); ?>
 					
 					<?php endif; ?>
 					
@@ -858,17 +858,17 @@ if(!isset($_SESSION["username"]))
 						
 						<?php $totalFare = ($noOfPassengers*$row["fare"])+250; ?>
 						
-						<input type="hidden" name="fareHidden" value="<?php echo $totalFare; ?>">
-						<input type="hidden" name="typeHidden" value="<?php echo $type; ?>">
-						<input type="hidden" name="originHidden" value="<?php echo $origin; ?>">
-						<input type="hidden" name="destinationHidden" value="<?php echo $destination; ?>">
-						<input type="hidden" name="departHidden" value="<?php echo $depart; ?>">
-						<input type="hidden" name="returnHidden" value="<?php echo $return; ?>">
-						<input type="hidden" name="noOfPassengersHidden" value="<?php echo $noOfPassengers; ?>">
-						<input type="hidden" name="flightNoOutboundHidden" value="<?php echo $row["flight_no"]; ?>">
+						<input type="hidden" name="fareHidden" value="<?php echo $totalFare ?? ''; ?>">
+						<input type="hidden" name="typeHidden" value="<?php echo $type ?? ''; ?>">
+						<input type="hidden" name="originHidden" value="<?php echo $origin ?? ''; ?>">
+						<input type="hidden" name="destinationHidden" value="<?php echo $destination ?? ''; ?>">
+						<input type="hidden" name="departHidden" value="<?php echo $depart ?? ''; ?>">
+						<input type="hidden" name="returnHidden" value="<?php echo $return ?? ''; ?>">
+						<input type="hidden" name="noOfPassengersHidden" value="<?php echo $noOfPassengers ?? ''; ?>">
+						<input type="hidden" name="flightNoOutboundHidden" value="<?php echo $row["flight_no"] ?? ''; ?>">
 						<input type="hidden" name="modeHidden" value="<?php echo "bus"; ?>">
-						<input type="hidden" name="busIDHidden" value="<?php echo $busID; ?>">
-						<input type="hidden" name="dateHidden" value="<?php echo $date; ?>">
+						<input type="hidden" name="busIDHidden" value="<?php echo $busID ?? ''; ?>">
+						<input type="hidden" name="dateHidden" value="<?php echo $date ?? ''; ?>">
 						<input type="hidden" name="classHidden" value="null">
 						<input type="hidden" name="adultsHidden" value="0">
 						<input type="hidden" name="childrenHidden" value="0">

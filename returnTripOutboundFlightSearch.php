@@ -75,11 +75,12 @@ if(!isset($_SESSION["username"]))
 		<?php
 		
 			$sql = "SELECT * FROM flights WHERE origin='$origin' AND destination='$destination' AND class='$className' ORDER BY seats_available DESC";
-			$rowcount = mysqli_num_rows(mysqli_query($conn,$sql));
+			//$rowcount = mysqli_num_rows(mysqli_query($conn,$sql));
 			
 			$result = $conn->query($sql);
+			$rowcount = $result->rowCount();
 			
-			if ($result->num_rows > 0) {
+			if ($rowcount > 0) {
 				
 		?>
 			<div class="noOfFlights">
@@ -353,7 +354,7 @@ if(!isset($_SESSION["username"]))
 					
 				$getSeatsAvailableSQL = "SELECT seats_available FROM `flights` WHERE flight_no='$flightNo'";
 				$getSeatsAvailableQuery = $conn->query($getSeatsAvailableSQL);
-				$SeatsAvailableGet = $getSeatsAvailableQuery ->fetch_array(MYSQLI_NUM);
+				$SeatsAvailableGet = $getSeatsAvailableQuery->fetch(PDO::FETCH_NUM);
 			
 				$seatsAvailable = $SeatsAvailableGet[0];
 				
@@ -442,7 +443,7 @@ if(!isset($_SESSION["username"]))
 		
 		?>
 		
-		<?php $conn->close(); //closing the connection to the database ?>
+		<?php $conn = null; //closing the connection to the database ?>
 			
 		<div class="spacerLarge">.</div> <!-- just a dummy class for creating some space -->
 			

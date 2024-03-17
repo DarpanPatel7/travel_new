@@ -56,6 +56,98 @@ if(!isset($_SESSION["username"]))
 					form.submit(); // Submit the form
 				}
 			});
+			$('#generateTicket').submit(function(event) {
+				// Prevent the form from submitting normally
+				event.preventDefault(); // Prevent default form submission
+				// Your form submission logic here
+				var isError = false;
+				if (!ValidateControl($('#cardNumber'))) {
+					showToastr("Enter Card Number!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#nameOnCard'))) {
+					showToastr("Enter Name On Card!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cvv'))) {
+					showToastr("Enter CVV!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cardExpiry'))) {
+					showToastr("Enter Card Expiry!", "error");
+					isError = true;
+				}
+				if (!isError) {
+					var form = event.target; // Get the form element from the event
+					form.submit(); // Submit the form
+				}
+			});
+			$('#generateTrainTicket').submit(function(event) {
+				// Prevent the form from submitting normally
+				event.preventDefault(); // Prevent default form submission
+				// Your form submission logic here
+				var isError = false;
+				if (!ValidateControl($('#cardNumber'))) {
+					showToastr("Enter Card Number!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#nameOnCard'))) {
+					showToastr("Enter Name On Card!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cvv'))) {
+					showToastr("Enter CVV!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cardExpiry'))) {
+					showToastr("Enter Card Expiry!", "error");
+					isError = true;
+				}
+				if (!isError) {
+					var form = event.target; // Get the form element from the event
+					form.submit(); // Submit the form
+				}
+			});
+			$('#generateBusTicket').submit(function(event) {
+				// Prevent the form from submitting normally
+				event.preventDefault(); // Prevent default form submission
+				// Your form submission logic here
+				var isError = false;
+				if (!ValidateControl($('#cardNumber'))) {
+					showToastr("Enter Card Number!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#nameOnCard'))) {
+					showToastr("Enter Name On Card!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cvv'))) {
+					showToastr("Enter CVV!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cardExpiry'))) {
+					showToastr("Enter Card Expiry!", "error");
+					isError = true;
+				}
+				if (!isError) {
+					var form = event.target; // Get the form element from the event
+					form.submit(); // Submit the form
+				}
+			});
+			$('#generateRiderReceipt').submit(function(event) {
+				// Prevent the form from submitting normally
+				event.preventDefault(); // Prevent default form submission
+				// Your form submission logic here
+				var isError = false;
+				if (!ValidateControl($('#cardNumber'))) {
+					showToastr("Enter Card Number!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#nameOnCard'))) {
+					showToastr("Enter Name On Card!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cvv'))) {
+					showToastr("Enter CVV!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cardExpiry'))) {
+					showToastr("Enter Card Expiry!", "error");
+					isError = true;
+				}
+				if (!isError) {
+					var form = event.target; // Get the form element from the event
+					form.submit(); // Submit the form
+				}
+			});
 		});
 	</script>
 	</head>
@@ -225,7 +317,7 @@ if(!isset($_SESSION["username"]))
 				
 				<?php if($mode=="ReturnTripFlight" or $mode=="OneWayFlight"): ?>
 				
-				<form action="generateTicket.php" method="POST">
+				<form action="generateTicket.php" method="POST" id="generateTicket">
 				
 					<div class="col-sm-12 bookingButton text-center">
 						<input type="submit" class="paymentButton" value="Pay Now">
@@ -277,7 +369,7 @@ if(!isset($_SESSION["username"]))
 				
 				<?php elseif($mode=="cabs"): ?>
 				
-				<form action="generateRiderReceipt.php" method="POST">
+				<form action="generateRiderReceipt.php" method="POST" id="generateRiderReceipt">
 				
 					<div class="col-sm-12 bookingButton text-center">
 						<input type="submit" class="paymentButton" value="Pay Now">
@@ -287,7 +379,7 @@ if(!isset($_SESSION["username"]))
 				
 				<?php elseif($mode=="bus"): ?>
 				
-				<form action="generateBusTicket.php" method="POST">
+				<form action="generateBusTicket.php" method="POST" id="generateBusTicket">
 				
 					<div class="col-sm-12 bookingButton text-center">
 						
@@ -297,13 +389,13 @@ if(!isset($_SESSION["username"]))
 						<input type="submit" class="paymentButton" value="Pay Now">
 					</div>
 					
-					<input type="hidden" name="totalPassengersHidden" value="<?php echo $totalPassengers; ?>">
-					<input type="hidden" name="fareHidden" value="<?php echo $fare; ?>">
-					<input type="hidden" name="originHidden" value="<?php echo $origin; ?>">
-					<input type="hidden" name="destinationHidden" value="<?php echo $destination; ?>">
-					<input type="hidden" name="departHidden" value="<?php echo $depart; ?>">
-					<input type="hidden" name="returnHidden" value="<?php echo $return; ?>">
-					<input type="hidden" name="modeHidden" value="<?php echo $mode ?>">
+					<input type="hidden" name="totalPassengersHidden" value="<?php echo $totalPassengers ?? ''; ?>">
+					<input type="hidden" name="fareHidden" value="<?php echo $fare ?? ''; ?>">
+					<input type="hidden" name="originHidden" value="<?php echo $origin ?? ''; ?>">
+					<input type="hidden" name="destinationHidden" value="<?php echo $destination ?? ''; ?>">
+					<input type="hidden" name="departHidden" value="<?php echo $depart ?? ''; ?>">
+					<input type="hidden" name="returnHidden" value="<?php echo $return ?? ''; ?>">
+					<input type="hidden" name="modeHidden" value="<?php echo $mode ?? ''; ?>">
 					
 					<?php for($i=1; $i<=$totalPassengers; $i++) {?>
 					
@@ -318,7 +410,7 @@ if(!isset($_SESSION["username"]))
 				
 				<?php elseif($mode=="train"): ?>
 				
-				<form action="generateTrainTicket.php" method="POST">
+				<form action="generateTrainTicket.php" method="POST" id="generateTrainTicket">
 				
 					<div class="col-sm-12 bookingButton text-center">
 						

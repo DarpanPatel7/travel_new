@@ -1,1 +1,1 @@
-<div class="logo"><?php echo !empty($logoNameL) ? $logoNameL : 'TRAVEL'; ?></div>
+<div class="logo"><!-- <?php echo !empty($logoNameL) ? $logoNameL : 'TRAVEL'; ?> --></div>

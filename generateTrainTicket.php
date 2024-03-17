@@ -76,7 +76,7 @@ ob_start();
 				
 				$getBookedSeatsOutboundSQL = "SELECT noOfBookings FROM `trains` WHERE trainNo='$trainID'";
 				$getBookedSeatsOutboundQuery = $conn->query($getBookedSeatsOutboundSQL);
-				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery ->fetch_array(MYSQLI_NUM);
+				$bookedSeatsOutboundGet = $getBookedSeatsOutboundQuery->fetch(PDO::FETCH_NUM);
 			
 				$bookedSeatsOutbound = $bookedSeatsOutboundGet[0];
 				$newBookedSeats = $bookedSeatsOutbound+$totalPassengers;
@@ -87,7 +87,7 @@ ob_start();
 				
 				$getSeatsAvailableOutboundSQL = "SELECT $seatsClass FROM `trains` WHERE trainNo='$trainID'";
 				$getSeatsAvailableOutboundQuery = $conn->query($getSeatsAvailableOutboundSQL);
-				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch_array(MYSQLI_NUM);
+				$SeatsAvailableOutboundGet = $getSeatsAvailableOutboundQuery ->fetch(PDO::FETCH_NUM);
 			
 				$seatsAvailableOutbound = $SeatsAvailableOutboundGet[0];
 				$newseatsAvailable = $seatsAvailableOutbound-$totalPassengers;
@@ -648,7 +648,7 @@ ob_start();
 				
 	$bookingIDSQL = "SELECT * FROM `trainbookings` ORDER BY `bookingID` DESC LIMIT 1";
 	$bookingIDQuery = $conn->query($bookingIDSQL);
-	$bookingIDGet = $bookingIDQuery ->fetch_array(MYSQLI_NUM);
+	$bookingIDGet = $bookingIDQuery ->fetch(PDO::FETCH_NUM);
 	$latestBookingID = $bookingIDGet[0];
 	$currentBookingID = $latestBookingID;
 

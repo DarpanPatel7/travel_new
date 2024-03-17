@@ -63,11 +63,12 @@ if(!isset($_SESSION["username"]))
 		<?php
 
 			$sql = "SELECT * FROM bus WHERE origin='$origin' AND destination='$destination' ORDER BY seatsAvailable DESC";
-			$rowcount = mysqli_num_rows(mysqli_query($conn,$sql));
+			//$rowcount = mysqli_num_rows(mysqli_query($conn,$sql));
 			
 			$result = $conn->query($sql);
+			$rowcount = $result->rowCount();
 			
-			if ($result->num_rows > 0) {
+			if ($rowcount > 0) {
 				
 		?>
 			<div class="noOfBus">
@@ -234,7 +235,7 @@ if(!isset($_SESSION["username"]))
 					
 				$getSeatsAvailableSQL = "SELECT seatsAvailable FROM `bus` WHERE busID='$busID'";
 				$getSeatsAvailableQuery = $conn->query($getSeatsAvailableSQL);
-				$SeatsAvailableGet = $getSeatsAvailableQuery ->fetch_array(MYSQLI_NUM);
+				$SeatsAvailableGet = $getSeatsAvailableQuery ->fetch(PDO::FETCH_NUM);
 			
 				$seatsAvailable = $SeatsAvailableGet[0];
 				
@@ -286,12 +287,12 @@ if(!isset($_SESSION["username"]))
 				<!-- Passing the $_POST values to the next page using hidden text boxes 
 				I'm not actually sure if this is the industry standard way to do so -->
 		
-				<input type="hidden" name="dateHidden" value="<?php echo $date; ?>">
-				<input type="hidden" name="originHidden" value="<?php echo $origin; ?>">
-				<input type="hidden" name="destinationHidden" value="<?php echo $destination; ?>">
-				<input type="hidden" name="departHidden" value="<?php echo $depart; ?>">
-				<input type="hidden" name="returnHidden" value="<?php echo $return; ?>">
-				<input type="hidden" name="passengersHidden" value="<?php echo $noOfPassengers; ?>">
+				<input type="hidden" name="dateHidden" value="<?php echo $date ?? ''; ?>">
+				<input type="hidden" name="originHidden" value="<?php echo $origin ?? ''; ?>">
+				<input type="hidden" name="destinationHidden" value="<?php echo $destination ?? ''; ?>">
+				<input type="hidden" name="departHidden" value="<?php echo $depart ?? ''; ?>">
+				<input type="hidden" name="returnHidden" value="<?php echo $return ?? ''; ?>">
+				<input type="hidden" name="passengersHidden" value="<?php echo $noOfPassengers ?? ''; ?>">
 				<input type="hidden" name="modeHidden" value="<?php echo "bus"; ?>">
 				
 				</form>
@@ -324,7 +325,7 @@ if(!isset($_SESSION["username"]))
 		
 		?>
 		
-		<?php $conn->close(); //closing the connection to the database ?>
+		<?php $conn = null; //closing the connection to the database ?>
 			
 		<div class="spacerLarge">.</div> <!-- just a dummy class for creating some space -->
 			
