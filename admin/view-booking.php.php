@@ -133,7 +133,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 				</div>
 				<!--heder end here-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="manage-users.phpl">Home</a><i class="fa fa-angle-right"></i>Manage Bookings</li>
+					<li class="breadcrumb-item"><a href="view-booking.php">Home</a><i class="fa fa-angle-right"></i>Manage Bookings</li>
 				</ol>
 				<div class="agile-grids">
 
@@ -195,28 +195,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 									
 									<?php
 									$Puid = $_GET['Puid'] ?? '';
-									$Pusername = $_GET['Pusername'] ?? '';
 									if(!empty($Pbookingtype) && $Pbookingtype == 'bus'){
 										$sql = "SELECT users.EMail,users.Phone,users.FullName,busbookings.* from  users
-										inner join busbookings on busbookings.username=users.Username
-										WHERE users.Username = '$Pusername'";
+										inner join busbookings on busbookings.username=users.Username";
 									}else if(!empty($Pbookingtype) && $Pbookingtype == 'hotel'){
 										$sql = "SELECT users.EMail,users.Phone,users.FullName,hotelbookings.* from  users
-										inner join hotelbookings on hotelbookings.username=users.Username
-										WHERE users.Username = '$Pusername'";
+										inner join hotelbookings on hotelbookings.username=users.Username";
 									}else if(!empty($Pbookingtype) && $Pbookingtype == 'flight'){
 										$sql = "SELECT users.EMail,users.Phone,users.FullName,flightbookings.* from  users
-										inner join flightbookings on flightbookings.username=users.Username
-										WHERE users.Username = '$Pusername'";
+										inner join flightbookings on flightbookings.username=users.Username";
 									}else if(!empty($Pbookingtype) && $Pbookingtype == 'train'){
 										$sql = "SELECT users.EMail,users.Phone,users.FullName,trainbookings.* from  users
-										inner join trainbookings on trainbookings.username=users.Username
-										WHERE users.Username = '$Pusername'";
+										inner join trainbookings on trainbookings.username=users.Username";
 									}else if(!empty($Pbookingtype) && $Pbookingtype == 'cab'){
 										$sql = "SELECT users.EMail,users.Phone,users.FullName,cabbookings.*,cabdrivers.carType from  users
 										inner join cabbookings on cabbookings.username=users.Username
-										right join cabdrivers on cabdrivers.carID=cabbookings.carID
-										WHERE users.Username = '$Pusername'";
+										left join cabdrivers on cabdrivers.carID=cabbookings.carID";
 									}
 
 									$query = $dbh->prepare($sql);
