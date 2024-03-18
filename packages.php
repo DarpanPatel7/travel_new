@@ -18,8 +18,7 @@ if (!isset($_SESSION["username"])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="images/favicon.ico">
 
-	<?php $titleNameT = 'Hotels';
-	include("common/title.php"); ?>
+	<?php $titleNameT = 'Hotels'; include("common/title.php"); ?>
 
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,55 +38,55 @@ if (!isset($_SESSION["username"])) {
 	<script src="js/bootstrap-datetimepicker.js"></script>
 	<script src="public/libs/toastr/toastr.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('#hotelSearch').submit(function(event) {
-				// Prevent the form from submitting normally
-				event.preventDefault(); // Prevent default form submission
-				// Your form submission logic here
-				var isError = false;
-				if (!ValidateControl($('#city'))) {
-					showToastr("Enter City!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#datetime5'))) {
-					showToastr("Enter Check-in Date!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#datetime6'))) {
-					showToastr("Enter Check-out Date!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#rooms'))) {
-					showToastr("Enter Room No!", "error");
-					isError = true;
-				}
-				if (!isError) {
-					var form = event.target; // Get the form element from the event
-					form.submit(); // Submit the form
-				}
+			$(document).ready(function() {
+				$('#hotelSearch').submit(function(event) {
+					// Prevent the form from submitting normally
+					event.preventDefault(); // Prevent default form submission
+					// Your form submission logic here
+					var isError = false;
+					if (!ValidateControl($('#city'))) {
+						showToastr("Enter City!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#datetime5'))) {
+						showToastr("Enter Check-in Date!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#datetime6'))) {
+						showToastr("Enter Check-out Date!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#rooms'))) {
+						showToastr("Enter Room No!", "error");
+						isError = true;
+					}
+					if (!isError) {
+						var form = event.target; // Get the form element from the event
+						form.submit(); // Submit the form
+					}
+				});
 			});
-		});
 	</script>
 	<script type="text/javascript">
-		$(function() {
-			$('#datetimepicker5').datetimepicker({
-				format: 'L',
-				locale: 'en-gb',
-				useCurrent: false,
-				minDate: moment()
-			});
+	$(function() {
+	$('#datetimepicker5').datetimepicker({
+	format: 'L',
+	locale: 'en-gb',
+	useCurrent: false,
+	minDate: moment()
+	});
 
-			$('#datetimepicker6').datetimepicker({
-				useCurrent: false,
-				format: 'L',
-				locale: 'en-gb'
-			});
+	$('#datetimepicker6').datetimepicker({
+	useCurrent: false,
+	format: 'L',
+	locale: 'en-gb'
+	});
 
-			$("#datetimepicker5").on("dp.change", function(e) {
-				$('#datetimepicker6').data("DateTimePicker").minDate(e.date);
-			});
+	$("#datetimepicker5").on("dp.change", function(e) {
+	$('#datetimepicker6').data("DateTimePicker").minDate(e.date);
+	});
 
-			$("#datetimepicker2").on("dp.change", function(e) {
-				$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-			});
-		});
+	$("#datetimepicker2").on("dp.change", function(e) {
+	$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+	});
+	});
 	</script>
 
 </head>

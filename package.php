@@ -195,46 +195,32 @@
 			<div class="col-xs-12 destinationHolder">
 
 				<div class="col-xs-12 destinationQuote">
-					Popular Destinations
+					Package
 				</div>
 
-				<a href="package.php?destination=Sikkim"><div class="col-xs-12 containerGrids hvr-buzz-out">
-
-					<div class="col-xs-12 pics text-center">
-						<img src="images/popularDestinations/imageAndaman.jpg" alt="popularDestination1" class="picDim text-center" />
-					</div>
-
-					<div class="col-xs-12 heading">
-						Sikkim
-					</div>
-
-				</div></a>
-
-				<a href="package.php?destination=Daman"><div class="col-xs-12 containerGrids hvr-buzz-out">
-
-					<div class="col-xs-12 pics text-center">
-						<img src="images/popularDestinations/imageJaisalmer.jpg" alt="popularDestination1" class="picDim text-center" />
-					</div>
-
-					<div class="col-xs-12 heading">
-						Daman
-					</div>
-
-				</div></a>
-
-				<a href="package.php?destination=Kerala"><div class="col-xs-12 containerGrids hvr-buzz-out">
-
-					<div class="col-xs-12 pics text-center">
-						<img src="images/popularDestinations/imageKashmir.jpg" alt="popularDestination1" class="picDim text-center" />
-					</div>
-
-					<div class="col-xs-12 heading">
-						Kerala
-					</div>
-
-				</div></a>
-
-
+				<?php
+				$destination = $_GET['destination'] ?? '';
+				$sql = "SELECT * from tbltourpackages where PackageLocation=:destination LIMIT 10";
+				$query = $conn->prepare($sql);
+				$query->bindParam(':destination', $destination, PDO::PARAM_STR);
+				$query->execute();
+				$results = $query->fetchAll(PDO::FETCH_OBJ);
+				$cnt = 1;
+				if ($query->rowCount() > 0) {
+					foreach ($results as $result) { ?>
+						<a href="packageDetails.php?PackageId=<?php echo $result->PackageId ?? '' ?>">
+							<div class="col-xs-12 containerGrids hvr-buzz-out">
+								<div class="col-xs-12 pics text-center">
+									<img src="./admin/pacakgeimages/<?php echo $result->PackageImage ?? '' ?>" alt="<?php echo $result->PackageImage ?? '' ?>" class="picDim text-center" />
+								</div>
+								<div class="col-xs-12 heading">
+									<?php echo $result->PackageName ?? '' ?>
+								</div>
+							</div>
+						</a>
+				<?php $cnt = $cnt + 1;
+					}
+				} ?>
 
 			</div>
 

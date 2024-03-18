@@ -148,6 +148,29 @@ if(!isset($_SESSION["username"]))
 					form.submit(); // Submit the form
 				}
 			});
+			$('#generatepackageReceipt').submit(function(event) {
+				// Prevent the form from submitting normally
+				event.preventDefault(); // Prevent default form submission
+				// Your form submission logic here
+				var isError = false;
+				if (!ValidateControl($('#cardNumber'))) {
+					showToastr("Enter Card Number!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#nameOnCard'))) {
+					showToastr("Enter Name On Card!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cvv'))) {
+					showToastr("Enter CVV!", "error");
+					isError = true;
+				} else if (!ValidateControl($('#cardExpiry'))) {
+					showToastr("Enter Card Expiry!", "error");
+					isError = true;
+				}
+				if (!isError) {
+					var form = event.target; // Get the form element from the event
+					form.submit(); // Submit the form
+				}
+			});
 		});
 	</script>
 	</head>
@@ -237,6 +260,13 @@ if(!isset($_SESSION["username"]))
 					$gender[$i]=$_POST["gender$i"];
 				}
 			} //for train
+			elseif($mode=="package") {
+				$fare=$_POST["fareHidden"];
+				$packageID=$_POST["packageIDHidden"];
+				$passengersBus=$_POST["passengersBusHidden"];
+				$checkIn=$_POST["checkInHidden"];
+				$city=$_POST["cityHidden"];
+			} //for hotels
 		
 		?>
 		
@@ -436,6 +466,22 @@ if(!isset($_SESSION["username"]))
 					<?php } ?>
 					
 					<input type="hidden" name="trainIDHidden" value="<?php echo $trainID; ?>">
+					
+				</form>
+
+				<?php elseif($mode=="package"): ?>
+
+					<form action="generatepackageReceipt.php" method="POST" id="generatepackageReceipt">
+				
+					<div class="col-sm-12 bookingButton text-center">
+						<input type="submit" class="paymentButton" value="Pay Now">
+					</div>
+					
+					<input type="hidden" name="packageIDHidden" value="<?php echo $packageID; ?>">
+					<input type="hidden" name="fareHidden" value="<?php echo $fare; ?>">
+					<input type="hidden" name="passengersBusHidden" value="<?php echo $passengersBus; ?>">
+					<input type="hidden" name="checkInHidden" value="<?php echo $checkIn; ?>">
+					<input type="hidden" name="cityHidden" value="<?php echo $city; ?>">
 					
 				</form>
 				

@@ -115,6 +115,10 @@ if(!isset($_SESSION["username"]))
 					$trainBookingsSQL = "SELECT COUNT(*) FROM `trainbookings` WHERE username='$user' AND cancelled='no'";
 					$trainBookingsQuery = $conn->query($trainBookingsSQL);
 					$noOfTrainBookings = $trainBookingsQuery->fetch(PDO::FETCH_NUM);
+
+					$packagebookingsSQL = "SELECT COUNT(*) FROM `packagebookings` WHERE username='$user' AND cancelled='no'";
+					$packagebookingsQuery = $conn->query($packagebookingsSQL);
+					$noOfpackagebookings = $packagebookingsQuery->fetch(PDO::FETCH_NUM);
 				
 				?>
 				
@@ -134,6 +138,7 @@ if(!isset($_SESSION["username"]))
 						<option value="trainTickets">Train Tickets (<?php echo $noOfTrainBookings[0]; ?>)</option> <!-- change echo -->
 						<option value="busTickets">Bus Tickets (<?php echo $noOfBusBookings[0] ?>)</option> <!-- change echo -->
 						<option value="cabTickets">Cab Tickets (<?php echo $noOfCabBookings[0] ?>)</option> <!-- change echo -->
+						<option value="packageTickets">Package Tickets (<?php echo $noOfpackagebookings[0] ?>)</option> <!-- change echo -->
 						
 					</select>
 					
@@ -434,6 +439,57 @@ if(!isset($_SESSION["username"]))
 													
 													
 				--------------------------------------------------------------------------------------------------->		
+
+
+				<?php if($noOfpackagebookings[0]>0): ?>
+				
+				<div class="col-sm-12 packageTableContainer pullABitLeft" id="packageTicketsWrapper">
+					
+						<table class="table table-responsive">
+							<thead>
+								<tr>
+									<th class="tableHeaderTags text-center" style="vertical-align: middle;">Id</th>
+									<th class="tableHeaderTags text-center" style="vertical-align: middle;">Package Name</th>
+									<th class="tableHeaderTags text-center" style="vertical-align: middle;">Date</th>
+									<th class="tableHeaderTags text-center" style="vertical-align: middle;">Receipt</th>
+								</tr>
+							</thead>
+							
+							<?php
+	
+								$packageTicketsSQL = "SELECT * FROM `packagebookings` WHERE username='$user' AND cancelled='no'";
+								$packageTicketsQuery = $conn->query($packageTicketsSQL);
+				
+								while($packageTicketsRow = $packageTicketsQuery->fetch(PDO::FETCH_ASSOC)) { 
+																
+								?>
+								
+								<tr>
+									<td class="tableElementTagsNoHover text-center"><?php echo $packageTicketsRow["bookingID"]; ?></td>
+									<td class="tableElementTagsNoHover text-center"><?php echo $packageTicketsRow["packageName"]; ?></td>
+									<td class="tableElementTagsNoHover text-center"><?php echo $packageTicketsRow["date"]; ?></td>
+									<td class="text-center"><a href="packageReceipts/receipt<?php echo $packageTicketsRow["bookingID"]; ?>.html" target="_blank"><span class="fa fa-download tableElementTags pullSpan"></span></a></td>
+								</tr>
+								
+							<?php } ?>
+					
+						</table>
+						
+				</div>
+				
+				<?php else: ?>
+				
+				<div class="col-sm-12 ticketTableContainer" id="packageTicketsWrapper">
+				
+					<div class="noBooking">
+					
+						Looks like you haven't booked any package with us yet. This area will list all your package bookings once you start booking packages.
+					
+					</div>
+				
+				</div>
+				
+				<?php endif; ?>
 				
 				</div>
 				
