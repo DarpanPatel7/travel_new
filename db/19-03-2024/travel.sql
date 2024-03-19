@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 19, 2024 at 05:28 AM
+-- Generation Time: Mar 19, 2024 at 12:41 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.13
 
@@ -2067,12 +2067,12 @@ INSERT INTO `hotels` (`hotelID`, `hotelName`, `city`, `locality`, `stars`, `rati
 DROP TABLE IF EXISTS `packagebookings`;
 CREATE TABLE IF NOT EXISTS `packagebookings` (
   `bookingID` int NOT NULL AUTO_INCREMENT,
-  `packageName` varchar(500) DEFAULT NULL,
-  `date` varchar(500) DEFAULT NULL,
-  `username` varchar(500) DEFAULT NULL,
-  `cancelled` varchar(500) DEFAULT NULL,
+  `packageName` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `date` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `username` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `cancelled` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`bookingID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `packagebookings`
@@ -2312,7 +2312,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `State` varchar(30) NOT NULL,
   `Date` varchar(50) NOT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `users`
@@ -2320,7 +2320,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`UserID`, `FullName`, `EMail`, `Phone`, `Username`, `Password`, `AddressLine1`, `AddressLine2`, `City`, `State`, `Date`) VALUES
 (18, 'DP', 'pd95@gmail.com', '+1 (755) 946-44', 'darpanpatel', '$2a$08$dcJ0eJbPFVk3hIdZPQYtWuV9OWqmNw/NK8ZQiYl6PVV6oU5oDnhVu', 'sdfsdf86 East White Hague Avenue', 'Error nemo laudantiu', 'Nisi natus est unde ', 'GUJARATaEst deleniti perfer', 'Monday 11th of March 2024 at 10:14:05 PM'),
-(20, 'Dante Nieves', 'liqasapewy@mailinator.com', '+1 (755) 946-44', 'test', '$2a$08$LG9XvEdb785c.V.WOi2nVu3k0ITbg8YsmkhhRys8vdUWwnUGdX93O', '86 East White Hague Avenue', 'Error nemo laudantiu', 'Nisi natus est unde ', 'Est deleniti perfer', 'Sunday 17th of March 2024 at 10:28:13 AM');
+(20, 'Dante Nieves', 'liqasapewy@mailinator.com', '+1 (755) 946-44', 'test', '$2a$08$LG9XvEdb785c.V.WOi2nVu3k0ITbg8YsmkhhRys8vdUWwnUGdX93O', '86 East White Hague Avenue', 'Error nemo laudantiu', 'Nisi natus est unde ', 'Est deleniti perfer', 'Sunday 17th of March 2024 at 10:28:13 AM'),
+(21, '', '', '', '', '$2a$08$8HgS78gOeJFOzqH02S6.teXqZ0hh.pFZA8p./HZc7IyrpDrFjVEBy', '', '', '', '', 'Tuesday 19th of March 2024 at 03:57:54 PM'),
+(22, 'Carl Ball', 'qujoweqyva@mailinator.com', '+1 (994) 714-80', 'ruhenezafa', '$2a$08$lKDIHbtmxv7cVOu7BEhbieO4hniMcswOe.MylIZiepxXcOPydnzSa', '51 Hague Street', 'Nobis doloremque cup', 'Consectetur officia', 'Dolore enim accusant', 'Tuesday 19th of March 2024 at 04:33:12 PM'),
+(23, 'Amity Valdez', 'kogehyt@mailinator.com', '+1 (299) 318-64', 'vuticakeni', '$2a$08$NMXlgaCUUJE0zhx4SQf0Q.Y9f7p7mG3HNUc21yKWl0IwFCYJhw6w6', '347 Rocky Hague Court', 'Nostrud suscipit qui', 'Autem nostrud nihil ', 'Id saepe molestias ', 'Tuesday 19th of March 2024 at 04:36:32 PM'),
+(24, 'Gwendolyn Turner', 'nenofozy@mailinator.com', '+1 (439) 608-29', 'dyvotoho', '$2a$08$CB64nC484eFIFr3xO1LMIuL31VeVY6XGznOiMkH36MUg8ruipO9XG', '37 North Rocky Hague Road', 'Nihil maiores dolore', 'Repellendus Omnis i', 'Minim magnam sit ver', 'Tuesday 19th of March 2024 at 04:38:32 PM');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
