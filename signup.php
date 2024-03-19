@@ -11,7 +11,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="images/favicon.ico">
 
-	<?php $titleNameT = 'Sign Up'; include("common/title.php"); ?>
+	<?php $titleNameT = 'Sign Up';
+	include("common/title.php"); ?>
 
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,41 +35,110 @@
 	<script>
 		$(document).ready(function() {
 			$('#signupAction').submit(function(event) {
-				// Prevent the form from submitting normally
-				event.preventDefault(); // Prevent default form submission
-				// Your form submission logic here
-				var isError = false;
-				if (!ValidateControl($('#fullname'))) {
-					showToastr("Enter Full Name!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#email'))) {
-					showToastr("Enter Email!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#phone'))) {
-					showToastr("Enter Phone Number!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#username'))) {
-					showToastr("Enter Username!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#password'))) {
-					showToastr("Enter Password!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#addressLine1'))) {
-					showToastr("Enter Address Line 1!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#addressLine2'))) {
-					showToastr("Enter Address Line 2!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#city'))) {
-					showToastr("Enter City!", "error");
-					isError = true;
-				} else if (!ValidateControl($('#state'))) {
-					showToastr("Enter State!", "error");
-					isError = true;
+				var isOtpSend = $('#isOtpSend').val();
+				if (isOtpSend == 0) {
+					// Prevent the form from submitting normally
+					event.preventDefault(); // Prevent default form submission
+					// Your form submission logic here
+					var isError = false;
+					if (!ValidateControl($('#fullname'))) {
+						showToastr("Enter Full Name!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#email'))) {
+						showToastr("Enter Email!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#phone'))) {
+						showToastr("Enter Phone Number!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#username'))) {
+						showToastr("Enter Username!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#password'))) {
+						showToastr("Enter Password!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#addressLine1'))) {
+						showToastr("Enter Address Line 1!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#addressLine2'))) {
+						showToastr("Enter Address Line 2!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#city'))) {
+						showToastr("Enter City!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#state'))) {
+						showToastr("Enter State!", "error");
+						isError = true;
+					}
+					if (!isError) {
+						// Serialize form data
+						var otp = Math.floor(1000 + Math.random() * 9000);
+						$('#otpHidden').val(otp);
+						var formData = $(this).serialize();
+						showToastr("please wait while sending mail!", "info");
+						$('#signupButton').prop("disabled", true);
+						$.ajax({
+							type: "POST",
+							url: "send_email.php", // PHP file to handle email sending logic
+							data: $(this).serialize(), // Serialize form data
+							success: function(response) {
+								// Handle success response
+								console.log(response); // Show success message
+								showToastr("mail succesfully send to above provided E-mail!", "success");
+								$('#otpblock').show();
+								$('#isOtpSend').val('1');
+							},
+							error: function(xhr, status, error) {
+								// Handle error
+								console.error(xhr.responseText); // Log error message
+								showToastr("Something went wrong while sending mail!", "error");
+							}
+						});
+						$('#otpblock').hide();
+						$('#signupButton').prop("disabled", false);
+					}
 				}
-				if (!isError) {
-					var form = event.target; // Get the form element from the event
-					form.submit(); // Submit the form
+				if (isOtpSend == 1) {
+					// Prevent the form from submitting normally
+					event.preventDefault(); // Prevent default form submission
+					// Your form submission logic here
+					var isError = false;
+					if (!ValidateControl($('#fullname'))) {
+						showToastr("Enter Full Name!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#email'))) {
+						showToastr("Enter Email!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#phone'))) {
+						showToastr("Enter Phone Number!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#username'))) {
+						showToastr("Enter Username!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#password'))) {
+						showToastr("Enter Password!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#addressLine1'))) {
+						showToastr("Enter Address Line 1!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#addressLine2'))) {
+						showToastr("Enter Address Line 2!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#city'))) {
+						showToastr("Enter City!", "error");
+						isError = true;
+					} else if (!ValidateControl($('#state'))) {
+						showToastr("Enter State!", "error");
+						isError = true;
+					}
+					if (!isError) {
+
+						if ($('#otp').val() == $('#otpHidden').val()) {
+							var form = event.target; // Get the form element from the event
+							form.submit(); // Submit the form 
+						} else {
+							showToastr("Invalid Otp!", "error");
+						}
+					}
 				}
 			});
 		});
@@ -118,7 +188,8 @@
 				<div class="containerBox">
 
 					<form action="signupAction.php" method="POST" id="signupAction">
-
+						<input type="hidden" name="otpHidden" id="otpHidden">
+						<input type="hidden" name="isOtpSend" id="isOtpSend" value="0">
 						<label for="name">Full Name: <span class="red-star">⋆</span></label>
 						<input type="text" class="input" name="name" placeholder="Enter your full name here" id="fullname">
 
@@ -150,6 +221,11 @@
 
 						<label for="addressLine2">State:<span class="red-star">⋆</span></label>
 						<input type="text" class="input" name="state" placeholder="Enter the name of your state here" id="state">
+
+						<div style="display: none;" id="otpblock">
+							<label for="otp">OTP:<span class="red-star">⋆</span></label>
+							<input type="text" class="input" name="otp" placeholder="Enter otp here" id="otp">
+						</div>
 
 						<div class="col-sm-12 text-center">
 							<input type="submit" class="button" name="signup" value="Sign Up" id="signupButton">

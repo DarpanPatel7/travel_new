@@ -1662,10 +1662,20 @@
   text-overflow: ellipsis;
   background-image: url("../images/signup/signup_bg.jpg");
   background-attachment: fixed;
-  height: auto;
-  min-height: 105em !important;
-  background-size: cover;
+  height: 100vh;
+  min-height: 120em !important;
+  background-size: cover; 
 }
+/* .signup {
+  min-height: 105em !important;
+  font-family: "raleway", sans-serif;
+  text-overflow: ellipsis;
+  background-image: url(../images/signup/signup_bg.jpg);
+  background-attachment: fixed;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+} */
 .signup label {
   color: white;
   font-weight: 300 !important;
@@ -1683,10 +1693,10 @@
 .signup .containerBox {
   box-sizing: border-box;
   border-radius: 0.5em;
-  min-height: 88.5em;
+  min-height: 100em;
   margin: 0em 2em 1.5em 2em;
   padding: 2em 3em;
-  height: auto;
+  height: 100vh;
   background: rgba(48, 48, 48, 0.8);
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;

@@ -61,7 +61,7 @@ include('includes/config.php');
 </head>
 
 <body>
-	<div class="main-wthree">
+	<div class="main-wthree" style="text-overflow: ellipsis; background-image: url(../images/login/login_bg.jpg); background-attachment: fixed; height: auto; min-height: 100vh !important; background-size: cover;">
 		<div class="container">
 			<div class="sin-w3-agile">
 				<h2>Sign In</h2>
@@ -71,9 +71,9 @@ include('includes/config.php');
 						<input type="text" name="username" class="name" placeholder="" id="username">
 						<div class="clearfix"></div>
 					</div>
-					<div>
-						<a href="forgot-password.php" style="color: #fff;">Forgot Password</a>
-					</div>
+					<!-- <div>
+						<a href="forgot-password.php" style="color: red;">Forgot Password</a>
+					</div> -->
 					<br>
 					<div class="password-agileits">
 						<span class="username">Password:</span>
@@ -87,7 +87,7 @@ include('includes/config.php');
 					<div class="clearfix"></div>
 				</form>
 				<div class="back">
-					<a href="../index.php" style="color: #fff;">Back to home</a>
+					<a href="../index.php" style="color: red;">Back to home</a>
 				</div>
 
 			</div>
