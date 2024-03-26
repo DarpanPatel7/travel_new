@@ -206,7 +206,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			$query = $dbh->prepare($sql);
 			$query->bindParam(':id', $id, PDO::PARAM_STR);
 			$query->execute();
-			echo "<script>alert('Package deleted.');</script>";
+			echo "<script>alert('Train deleted.');</script>";
 			echo "<script>window.location.href='manage-trains.php'</script>";
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();

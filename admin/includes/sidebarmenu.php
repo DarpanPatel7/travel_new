@@ -23,9 +23,9 @@
 			<li><a href="view-booking.php"><i class="fa fa-list" aria-hidden="true"></i> <span>View Booking</span>
 					<div class="clearfix"></div>
 				</a></li>
-			<li><a href="manageissues.php"><i class="fa fa-table"></i> <span>Manage Issues</span>
+			<!-- <li><a href="manageissues.php"><i class="fa fa-table"></i> <span>Manage Issues</span>
 					<div class="clearfix"></div>
-				</a></li>
+				</a></li> -->
 			<li><a href="manage-enquires.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span>Manage Enquiries</span>
 					<div class="clearfix"></div>
 				</a></li>
@@ -62,14 +62,22 @@
 					<li id="menu-academico-avaliacoes"><a href="manage-trains.php">Manage</a></li>
 				</ul>
 			</li>
-			<!-- <li id="menu-academico"><a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Cab</span> <span class="fa fa-angle-right" style="float: right"></span>
+			<li id="menu-academico"><a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Cab</span> <span class="fa fa-angle-right" style="float: right"></span>
 					<div class="clearfix"></div>
 				</a>
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-avaliacoes"><a href="create-cab.php">Create</a></li>
 					<li id="menu-academico-avaliacoes"><a href="manage-cabs.php">Manage</a></li>
 				</ul>
-			</li> -->
+			</li>
+			<li id="menu-academico"><a href="#"><i class="fa fa-list-ul" aria-hidden="true"></i><span>Cab Driver</span> <span class="fa fa-angle-right" style="float: right"></span>
+					<div class="clearfix"></div>
+				</a>
+				<ul id="menu-academico-sub">
+					<li id="menu-academico-avaliacoes"><a href="create-cabdriver.php">Create</a></li>
+					<li id="menu-academico-avaliacoes"><a href="manage-cabdrivers.php">Manage</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </div>

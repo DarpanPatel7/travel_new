@@ -93,21 +93,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 					<div class="agile-tables">
 						<div class="w3l-table-info">
-							<h2>Manage Trains</h2>
+							<h2>Manage Cabs</h2>
 							<table id="table">
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>trainNo</th>
-										<th>region</th>
-										<th>trainName</th>
 										<th>origin</th>
 										<th>destination</th>
+										<th>distance</th>
+										<th>time</th>
+										<th>originCode</th>
+										<th>destinationCode</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php $sql = "SELECT * from trains LIMIT 30";
+									<?php $sql = "SELECT * from cabs LIMIT 30";
 									$query = $dbh->prepare($sql);
 									$query->execute();
 									$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -116,13 +117,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 										foreach ($results as $result) {				?>
 											<tr>
 												<td><?php echo htmlentities($cnt); ?></td>
-												<td><?php echo htmlentities($result->trainNo); ?></td>
-												<td><?php echo htmlentities($result->region); ?></td>
-												<td><?php echo htmlentities($result->trainName); ?></td>
 												<td><?php echo htmlentities($result->origin); ?></td>
 												<td><?php echo htmlentities($result->destination); ?></td>
-												<td><a href="update-train.php?pid=<?php echo htmlentities($result->trainNo); ?>"><button type="button" class="btn btn-primary btn-block">Update/View Details</button></a><br />
-													<a href="manage-trains.php?action=delete&&id=<?php echo $result->trainNo; ?>" onclick="return confirm('Do you really want to delete?')" class="btn btn-danger btn-block">Delete</a>
+												<td><?php echo htmlentities($result->distance); ?></td>
+												<td><?php echo htmlentities($result->time); ?></td>
+												<td><?php echo htmlentities($result->originCode); ?></td>
+												<td><?php echo htmlentities($result->destinationCode); ?></td>
+												<td><a href="update-cab.php?pid=<?php echo htmlentities($result->id); ?>"><button type="button" class="btn btn-primary btn-block">Update/View Details</button></a><br />
+													<a href="manage-cabs.php?action=delete&&id=<?php echo $result->id; ?>" onclick="return confirm('Do you really want to delete?')" class="btn btn-danger btn-block">Delete</a>
 												</td>
 											</tr>
 									<?php $cnt = $cnt + 1;
@@ -202,12 +204,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 	if ($_GET['action'] == 'delete') {
 		try {
 			$id = $_GET['id'];
-			$sql = "delete from trains where trainNo =:id";
+			$sql = "delete from cabs where id=:id";
 			$query = $dbh->prepare($sql);
 			$query->bindParam(':id', $id, PDO::PARAM_STR);
 			$query->execute();
-			echo "<script>alert('Package deleted.');</script>";
-			echo "<script>window.location.href='manage-trains.php'</script>";
+			echo "<script>alert('Cab deleted.');</script>";
+			echo "<script>window.location.href='manage-cabs.php'</script>";
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 		}

@@ -75,7 +75,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 						</a>
 
 
-						<a href="manageissues.php" target="_blank">
+						<!-- <a href="manageissues.php" target="_blank">
 							<div class="col-md-4 four-grid">
 								<div class="four-w3ls">
 									<div class="icon">
@@ -95,7 +95,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 								</div>
 							</div>
-						</a>
+						</a> -->
 
 
 						<a href="manage-packages.php" target="_blank">
@@ -107,11 +107,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<div class="four-text">
 										<h3>Toatal packages</h3>
 										<?php 
-										/* $sql3 = "SELECT PackageId from tbltourpackages";
+										$sql3 = "SELECT PackageId from tbltourpackages";
 										$query3 = $dbh->prepare($sql3);
 										$query3->execute();
 										$results3 = $query3->fetchAll(PDO::FETCH_OBJ);
-										$cnt3 = $query3->rowCount(); */
+										$cnt3 = $query3->rowCount();
 										?>
 										<h4><?php echo !empty($cnt3) ? htmlentities($cnt3) : 0; ?></h4>
 

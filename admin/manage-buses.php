@@ -215,7 +215,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			$query = $dbh->prepare($sql);
 			$query->bindParam(':id', $id, PDO::PARAM_STR);
 			$query->execute();
-			echo "<script>alert('Package deleted.');</script>";
+			echo "<script>alert('Bus deleted.');</script>";
 			//echo "<script>showToastr('Package deleted.', 'success');</script>"; // Assuming showToastr is a JavaScript function to show a notification
 			echo "<script>window.location.href='manage-buses.php'</script>";
 		} catch (PDOException $e) {

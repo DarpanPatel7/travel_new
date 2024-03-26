@@ -18,12 +18,12 @@ try {
 	$phpmailer->Host = 'sandbox.smtp.mailtrap.io';
 	$phpmailer->SMTPAuth = true;
 	$phpmailer->Port = 2525;
-	$phpmailer->Username = 'e5001f1dc68bea';
-	$phpmailer->Password = '8c8ebdab4a1e5a';
+	$phpmailer->Username = 'ee4073acf91fcc';
+	$phpmailer->Password = '54abc5de50835e';
 
     //Recipients
-    $phpmailer->setFrom('pateldarpan4295@gmail.com', 'Darpan');
-    $phpmailer->addAddress($data['email'], 'Test Name');     // Add a recipient
+    $phpmailer->setFrom('test@gmail.com', 'Test');
+    $phpmailer->addAddress($data['email'], 'Test');     // Add a recipient
 
     // Content
     $phpmailer->isHTML(true);                                  // Set email format to HTML

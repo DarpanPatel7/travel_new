@@ -86,30 +86,29 @@ if (strlen($_SESSION['alogin']) == 0) {
 				</div>
 				<!--heder end here-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="manage-hotels.php">Home</a><i class="fa fa-angle-right"></i>Manage Hotels</li>
+					<li class="breadcrumb-item"><a href="manage-cabdrivers.php">Home</a><i class="fa fa-angle-right"></i>Manage Cab Drivers</li>
 				</ol>
 				<div class="agile-grids">
 					<!-- tables -->
 
 					<div class="agile-tables">
 						<div class="w3l-table-info">
-							<h2>Manage Hotels</h2>
+							<h2>Manage Cab Drivers</h2>
 							<table id="table">
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>hotelID</th>
-										<th>hotelName</th>
-										<th>city</th>
-										<th>locality</th>
-										<th>stars</th>
-										<th>rating</th>
-										<th>price</th>
+										<th>carType</th>
+										<th>carModel</th>
+										<th>carNo</th>
+										<th>driverName</th>
+										<th>driverPhone</th>
+										<th>driverRating</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php $sql = "SELECT * from hotels LIMIT 30";
+									<?php $sql = "SELECT * from cabdrivers LIMIT 30";
 									$query = $dbh->prepare($sql);
 									$query->execute();
 									$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -118,15 +117,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 										foreach ($results as $result) {				?>
 											<tr>
 												<td><?php echo htmlentities($cnt); ?></td>
-												<td><?php echo htmlentities($result->hotelID); ?></td>
-												<td><?php echo htmlentities($result->hotelName); ?></td>
-												<td><?php echo htmlentities($result->city); ?></td>
-												<td><?php echo htmlentities($result->locality); ?></td>
-												<td><?php echo htmlentities($result->stars); ?></td>
-												<td><?php echo htmlentities($result->rating); ?></td>
-												<td><?php echo htmlentities($result->price); ?></td>
-												<td><a href="update-hotel.php?pid=<?php echo htmlentities($result->hotelID); ?>"><button type="button" class="btn btn-primary btn-block">Update/View Details</button></a><br />
-													<a href="manage-hotels.php?action=delete&&id=<?php echo $result->hotelID; ?>" onclick="return confirm('Do you really want to delete?')" class="btn btn-danger btn-block">Delete</a>
+												<td><?php echo htmlentities($result->carType); ?></td>
+												<td><?php echo htmlentities($result->carModel); ?></td>
+												<td><?php echo htmlentities($result->carNo); ?></td>
+												<td><?php echo htmlentities($result->driverName); ?></td>
+												<td><?php echo htmlentities($result->driverPhone); ?></td>
+												<td><?php echo htmlentities($result->driverRating); ?></td>
+												<td><a href="update-cabdriver.php?pid=<?php echo htmlentities($result->carID); ?>"><button type="button" class="btn btn-primary btn-block">Update/View Details</button></a><br />
+													<a href="manage-cabdrivers.php?action=delete&&id=<?php echo $result->carID; ?>" onclick="return confirm('Do you really want to delete?')" class="btn btn-danger btn-block">Delete</a>
 												</td>
 											</tr>
 									<?php $cnt = $cnt + 1;
@@ -206,12 +204,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 	if ($_GET['action'] == 'delete') {
 		try {
 			$id = $_GET['id'];
-			$sql = "delete from hotels where hotelID =:id";
+			$sql = "delete from cabdrivers where carID=:id";
 			$query = $dbh->prepare($sql);
 			$query->bindParam(':id', $id, PDO::PARAM_STR);
 			$query->execute();
-			echo "<script>alert('Hotel deleted.');</script>";
-			echo "<script>window.location.href='manage-hotels.php'</script>";
+			echo "<script>alert('Cab Driver deleted.');</script>";
+			echo "<script>window.location.href='manage-cabdrivers.php'</script>";
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 		}
