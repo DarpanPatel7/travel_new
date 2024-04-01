@@ -122,15 +122,15 @@ if (!isset($_SESSION["username"])) {
 
 							<?php
 
-							$var1 = $_SESSION["checkIn"];
-							$var2 = $_SESSION["checkOut"];
+							$var1 = $_SESSION["checkIn"] ?? '';
+							$var2 = $_SESSION["checkOut"] ?? '';
 							$date1 = date_create(str_replace('/', '-', $var1));
 							$date2 = date_create(str_replace('/', '-', $var2));
 							$diff = date_diff($date1, $date2);
 
 							?>
 
-							<div class="heading"><?php echo $_SESSION["noOfRooms"]; ?> Rooms x <?php echo $diff->format("%a Days"); ?></div>
+							<div class="heading"><?php echo $_SESSION["noOfRooms"] ?? ''; ?> Rooms x <?php echo $diff->format("%a Days"); ?></div>
 							<div class="heading">Convenience Fee</div>
 						</div>
 
